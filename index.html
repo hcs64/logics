@@ -2,11 +2,106 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Begins</title>
+<title>Logics</title>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: { inlineMath: [['$','$']] }
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+<style>
+div.detail-section {
+  display: none;
+}
+span.potential-term {
+  font-style: italic;
+}
+span.active-term {
+  text-decoration: underline;
+}
+span.hover-term {
+}
+</style>
 </head>
 
 <body>
-Just the very beginnings
+<h1>Logics report fragments</h1>
+
+<p>
+Here I am going to host sections of a report on the branch of <span class="term">formal logic</span> called <span class="term">modal logic</span>. It is hard to tell what shape this will take so far, but I intend to deal mostly with <span class="term">dynamic logics</span> (<span class="term">propositional</span> and <span class="term">first order</span>), with some discussion of <span class="term">linear time temporal logic</span> and possibly <span class="term">autoepistemic logic</span>.
+</p>
+
+<p>
+This will also serve as a playground for me to experiment with <span>MathJax</span> and active web content in general. Hopefully it will be usable and readable but that is not the primary goal, or so I tell myself.
+</p>
+
+<hr>
+
+<div class="detail-section" id="modal-logic">
+<small>A brief explanation of</small>
+<h2>Modal logic</h2>
+<p>Very basic formal logics deal with a single state of the universe. A proposition is true, or it is false. There is no sense of what it has been, or what it could be, or how it might get to be that way. A natural way to understand modal logic is that it allows us to work with alternate universes.</p>
+<p>To be continued</p>
+</div>
+
+<p>End</p>
+
+<script>
+
+$(function(){
+  var dictionary = {
+    'modal logic': $('div#modal-logic')
+  };
+
+  var getDivForTerm = function (termElement) {
+    if (termElement.id in dictionary) {
+      return dictionary[termElement.id];
+    }
+    if (termElement.textContent in dictionary) {
+      return dictionary[termElement.textContent];
+    }
+
+    return null;
+  };
+
+  var activateTerm = function (termElement) {
+    var div = getDivForTerm(termElement);
+
+    // hide others
+    $('div.detail-section').hide();
+    $('span.term').removeClass('active-term');
+      
+    // show this section
+    div.show();
+    $(termElement).
+      addClass('active-term').
+      addClass('hover-term');
+  };
+
+  $('span.term').filter(function (index, element) {
+    return getDivForTerm(element) !== null;
+  }).hover(
+    // hover in
+    function (e) {
+      activateTerm(e.target);
+    },
+    // hover out
+    function (e) {
+      var o = e.target;
+      $(o).removeClass('hover-term');
+    }
+  ).click(
+    function (e) {
+      activateTerm(e.target);
+    }
+  ).addClass('potential-term');
+});
+</script>
 </body>
 
 </html>
