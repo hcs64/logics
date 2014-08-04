@@ -37,13 +37,46 @@ Here I am going to host sections of a report on the branch of <span class="term"
 <p>
 This will also serve as a playground for me to experiment with <span>MathJax</span> and active web content in general. Hopefully it will be usable and readable but that is not the primary goal, or so I tell myself.
 </p>
+<p>
+In particular I am not going to be concentrating on historical aspects. I will add a list of references that I have studied, but I will not make any effort to track down the origins of ideas.
+</p>
 
 <hr>
 
 <div class="detail-section" id="formal-logic">
 <small>A brief explanation of</small>
 <h2>Formal logic</h2>
-<p>Very brief</p>
+<p>
+Formal logic takes its name from dealing with the form of logical statements.
+It should be possible to identify statements that are logically true, and construct valid arguments, purely at a structural level, once a few basic axioms are granted.
+If there is an error in the logic, then, it should not have much space in which to hide.
+</p>
+<p>
+There are two basic approaches to establishing the truth of statements:
+<ul>
+<li>evaluation (semantically-oriented, this encompasses model checking, satisfiability, etc)</li>
+<li>proof (syntactically-oriented, theorem proving)</li>
+</ul>
+</p>
+<p>
+Evaluation consists of taking a well-formed formula (wff) and, based on its structure and rules for the meaning (semantics) of each subexpression, determining the overall meaning of the formula. When the truth of propositions used in the formula are known, this is trivial. When we must instead determine whether there is any assignment of propositional variables that could make the expression true, i.e. whether the statement is satisfiable, this becomes a rather different problem, which is very difficult in general.
+</p>
+<p>
+Formal proofs are a stylized form of argument, taking the approach of generating new true statements from previously accepted or proven statements. This is done entirely on a syntactic level. It can be used to determine the truth of statements only insofar as any statement for which a proof exists can be considered true. This may be approached by working backwards from the formula to be proved, trying to show how it follows from the axioms. The fundamental mechanism here is modus ponens, if <i>p</i> implies <i>q</i> is true and <i>p</i> is true, then <i>q</i> is true. A formal proof is a mathematical object just as a formula/statement/expression is, and one can think of the proving process as &quot;solving&quot; for a proof.
+</p>
+<p>
+The relationship between the two approaches is usually expressed as questioning the validity of the proof method. You want to ensure two things:
+<ul>
+<li>soundness (aka consistency, proofs only exist for true statements)</li>
+<li>completeness (a proof exists for any true statement)</li>
+</ul>
+where &quot;true statement&quot; is taken as &quot;something that evaluates to true&quot;.
+</p>
+<p>
+Due to its mechanical nature, formal logic is perfectly suited for being interpreted mechanically. This is in itself a vast field of research.
+</p>
+<p>To be continued/improved...</p>
+<p>Notes: I should be talking about model theory rather than &quot;evaluation&quot;, but I don't really understand it well enough to be comfortable with discussing it here.</p>
 </div>
 
 <div class="detail-section" id="modal-logic">
