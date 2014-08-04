@@ -43,15 +43,34 @@ This will also serve as a playground for me to experiment with <span>MathJax</sp
 <hr>
 
 <div class="detail-section" id="modal-logic">
+</div>
+
+<div class="detail-section" id="modal-logic">
 <small>A brief explanation of</small>
 <h2>Modal logic</h2>
-<p>Very basic formal logics deal with a single state of the universe. A proposition is true, or it is false. There is no sense of what it has been, or what it could be, or how it might get to be that way. A natural way to understand modal logic is that it allows us to work with alternate universes.</p>
-<p>To be continued</p>
+<p>Very basic formal logics, the kind that are the most thoroughly studied, particularly by nonspecialists like me, deal with a single state of the universe. A proposition is true, or it is false. There is no sense of what it has been, or what it could be, or how it might get to be that way. A natural way to understand modal logic is that it allows us to work with alternate universes.</p>
+<p>Consider the passage of time. We might want to say that <i>p</i> will be true at some time in the future. This would be expressed in temporal logic as F<i>p</i>.</p>
+<p>The F operator introduces another time relative to the current one, and all propositions in the context of that operator are making claims about a point in the future. There is also an operator G. G<i>p</i> means <i>p</i> will always be true in the future, though note that that doesn't mean <i>p</i> is <em>currently</em> true. That is, it is not the case that $\text{F}p \rightarrow p$.</p>
+<p>What is perhaps a bit more interesting is to say &quot;$p$ will be true at some time in the future, and thereafter it will always be true&quot;. This would be expressed as $\text{F}(p \wedge \text{G}p)$.</p>
+<p>You can see that F is interpreted as &quot;at some time in the <strong>F</strong>uture ...&quot;, while G is &quot;it is always <strong>G</strong>oing to be ...&quot;. 
+
+<p>to be continued/improved</p>
+<p>Notes: Perhaps it would make more sense to use the traditional possible world semantics here as the basic modal logic example rather than temporal logic, leave that for a discussion of temporal logic. It is probably easier to visualize visualization than it is to deal with all the tension of tenses in tense logic.</p>
 </div>
 
 <p>End</p>
 
 <script>
+
+// PIPEDREAM:
+// I guess the natural way to do this would be to just have every term on a
+// different page and link between them, let the browser handle the concept
+// of a stack of pages.  But I think there is some potential for showing
+// terms in context, particularly when it is possible to do this in whatever
+// order seems appropriate, and to have this order validated by the page
+// displaying these sequentially (which is not at all something I have
+// implemented yet). The page knowing the context may also allow for
+// adjustments and assumptions in the presentation.
 
 $(function(){
   var dictionary = {
