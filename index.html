@@ -24,8 +24,6 @@ span.potential-term {
 span.active-term {
   text-decoration: underline;
 }
-span.hover-term {
-}
 </style>
 </head>
 
@@ -42,7 +40,10 @@ This will also serve as a playground for me to experiment with <span>MathJax</sp
 
 <hr>
 
-<div class="detail-section" id="modal-logic">
+<div class="detail-section" id="formal-logic">
+<small>A brief explanation of</small>
+<h2>Formal logic</h2>
+<p>Very brief</p>
 </div>
 
 <div class="detail-section" id="modal-logic">
@@ -74,6 +75,7 @@ This will also serve as a playground for me to experiment with <span>MathJax</sp
 
 $(function(){
   var dictionary = {
+    'formal logic': $('div#formal-logic'),
     'modal logic': $('div#modal-logic')
   };
 
@@ -97,28 +99,23 @@ $(function(){
       
     // show this section
     div.show();
-    $(termElement).
-      addClass('active-term').
-      addClass('hover-term');
+    $(termElement).addClass('active-term');
   };
 
-  $('span.term').filter(function (index, element) {
+  $('span.term').
+
+  filter(function (index, element) {
     return getDivForTerm(element) !== null;
-  }).hover(
-    // hover in
-    function (e) {
-      activateTerm(e.target);
-    },
-    // hover out
-    function (e) {
-      var o = e.target;
-      $(o).removeClass('hover-term');
-    }
-  ).click(
+  }).
+
+  click(
     function (e) {
       activateTerm(e.target);
     }
-  ).addClass('potential-term');
+  ).
+  
+  addClass('potential-term');
+
 });
 </script>
 </body>
