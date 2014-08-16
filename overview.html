@@ -10,21 +10,43 @@
 
 <h2>Overview</h2>
 <p>
-This report deals with a branch of formal logic called Propositional Modal Logicin which we are concerned with the truth of propositions.<br>
-A <i>proposition</i> is a statement that is considered to be true or false, such as:
-<ol>
-<li>&quot;It is raining.&quot;</li>
-<li>&quot;The sky is green.&quot;</li>
-<li>&quot;If the sky is green, it will never rain again.&quot;</li>
-<li>&quot;It could rain or it could snow, maybe both.&quot;</li>
-</ol>
-Some propositions will be considered <i>atomic</i>, meaning indivisible, because we will not consider them to be made out of simpler concepts. We could analyze &quot;it is raining&quot; as a statement about weather, at some time, and regarding some weather condition, or we could ignore those details if we are only interested in the truth of the overall statement. Propositions 1 and 2 above can be treated in this way.
+This report deals with a branch of formal logic called
+Propositional Modal Logic,
+in which we are concerned with the truth of propositions.<br>
+Our concern in a formal logic is to abstract away every detail that is not
+necessary for preserving the validity of statements. Much reasoning is valid on 
+a formal level: as long as the proper form is followed an argument will be
+valid.
+This abstraction allows logicians to study the structure of logic quite apart
+from dealing with the specifics of arguments.
+For instance, much of the work disucssed in this report has applications to
+proving the correctness of computer programs,
+though much of it was developed without any consideration of computers.
 </p>
 
 <p>
-<i>Note:</i> I think I am going off the deep end a bit with these explanations, I need a better feeling for audience. Then again the distinction between what we care about and build in implicitly to a logical system, and what we instead consider to be incidental, is an important point to be made.<br>
-I could get away with a lot less explanation if we stuck with points of mathematical or CS logic, I guess. Then I would be excluding certain people from the audience automatically at such an early stage.<br>
-But look at the rest of the outline. There is no way that I can make a mom-friendly treatment all the way through. Is that a challenge?
+In the case of propositional logic we reduce statements to atomic propositions, joined by a very small family of logical connectives into larger propositions.</p>
+An <i>atomic</i> proposition is defined to have no further internal structure that we are interested in. So if we have two atomic propositions
+<ul>
+<li><i>p</i> = &quot;My pants are blue&quot;</li>
+<li><i>q</i> = &quot;My hair is black&quot;</li>
+</ul>
+we are ignoring any interesting contrasts or commonalities,
+such as that both of these statements are about me, involve colors, and mention
+two different colors. An atomic proposition only has an identity, like the
+letters <i>p</i> and <i>q</i> here, which lets us know whether propositions can
+be considered identical.<br>
+This implies that, absent any other statements, there is no relation between
+<i>p</i> and <i>q</i>; setting up these propositions doesn't even make any
+claims about truth. If we want to claim that <i>p</i> is true, we must also
+<i>assert</i> that <i>p</i> is true.
 </p>
+<p>
+</p>
+
+<p>
+Propositional logic gets interesting once we start using connectives.
+</p>
+
 </body>
 </html>
