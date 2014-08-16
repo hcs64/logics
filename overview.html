@@ -3,37 +3,86 @@
 <head>
 <meta charset="utf-8">
 <title>Logics</title>
+
+<style>
+div.subbody {
+  max-width:960px;
+  margin-left:auto;
+  margin-right:auto;
+}
+</style>
 </head>
 
 <body>
+<div class="subbody">
 <h1>Modal logics, temporal and dynamic</h1>
 
 <h2>Overview</h2>
 <p>
 This report deals with a branch of formal logic called
-Propositional Modal Logic,
-in which we are concerned with the truth of propositions.<br>
+Modal Logic, in which we are concerned with the truth of propositions in various
+contexts, and how those contexts relate to each other logically.
+Example contexts include points in time, conceivable worlds,
+believable knowledge, and states of a computation.</p>
+<p>
+There is a good deal of theoretical mechanism that applies equally well to many
+kinds of Modal Logic, such as a the unifying Kripke semantics. The essential
+core of Kripke semantics is a binary relation on the &quot;worlds&quot;, which
+defines how propositions in one world may be referenced by propositions in
+another. I will give examples for these vague remarks for the two logics we will
+consider, Temporal Logic and Dynamic Logic.
+</p>
+<p>
+In Temporal Logic the contexts are points in time.
+Times are related by the relations
+&quot;<i>s</i> is in the past of <i>t</i>&quot; and
+&quot;<i>s</i> is in the future of <i>t</i>&quot;.
+We can use temporal logic to express statements with reference to some or all
+future or past times, such as
+&quot;<i>p</i> or <i>q</i> will be true&quot; or
+&quot;if <i>r</i> was always true, <i>r</i> is true&quot;.
+These are useful, for instance, for verifying the eventual proper behavior of
+programs,
+invariants such as &quot;if the operating system gets a request, it will
+eventually grant the request&quot;.
+</p>
+
+<p>
+In Dynamic Logic the contexts are the states of an executing program,
+and there are infinitely many relations: the input/output relations of programs.
+This lets us express such statements as
+&quot;when program <i>a</i> finishes, <i>p</i> is true&quot; and
+&quot;if <i>p</i> or <i>q</i> are true, then when program <i>b</i> finishes, <i>q</i> is true&quot;.
+This can be useful for formally specifying correctness properties, however the
+generality of the technique has mostly seen only theoretical use.
+</p>
+
+<h2>Introduction</h2>
+<h3>Formal logic</h3>
+<p>
 Our concern in a formal logic is to abstract away every detail that is not
 necessary for preserving the validity of statements. Much reasoning is valid on 
 a formal level: as long as the proper form is followed an argument will be
 valid.
 This abstraction allows logicians to study the structure of logic quite apart
-from dealing with the specifics of arguments.
-For instance, much of the work disucssed in this report has applications to
-proving the correctness of computer programs,
-though much of it was developed without any consideration of computers.
+from dealing with the specifics of arguments, and it encourages attention to the
+essential details of a situation.
 </p>
 
+<h3>Propositions</h3>
 <p>
-In the case of propositional logic we reduce statements to atomic propositions, joined by a very small family of logical connectives into larger propositions.</p>
-An <i>atomic</i> proposition is defined to have no further internal structure that we are interested in. So if we have two atomic propositions
+In the case of propositional logic, we reduce statements to atomic propositions, joined by a very small family of logical connectives into larger propositions.</p>
+<p>
+A <i>proposition</i> is simply a statement which we regard to be true or false.
+An <i>atomic proposition</i> is defined to have no further internal structure that we are interested in.</p>
+<p>So if we have two atomic propositions
 <ul>
 <li><i>p</i> = &quot;My pants are blue&quot;</li>
 <li><i>q</i> = &quot;My hair is black&quot;</li>
 </ul>
 we are ignoring any interesting contrasts or commonalities,
-such as that both of these statements are about me, involve colors, and mention
-two different colors. An atomic proposition only has an identity, like the
+such as that both of these statements are about me and involve colors.
+An atomic proposition only has an identity, like the
 letters <i>p</i> and <i>q</i> here, which lets us know whether propositions can
 be considered identical.<br>
 This implies that, absent any other statements, there is no relation between
@@ -41,12 +90,12 @@ This implies that, absent any other statements, there is no relation between
 claims about truth. If we want to claim that <i>p</i> is true, we must also
 <i>assert</i> that <i>p</i> is true.
 </p>
+
+<h3>Connectives</h3>
 <p>
+Propositional logic gets interesting once we start using logical connectives. If we wanted to state &quot;my pants are blue and my hair is black&quot;, we might introduce a new atomic
 </p>
 
-<p>
-Propositional logic gets interesting once we start using connectives.
-</p>
-
+</div>
 </body>
 </html>
