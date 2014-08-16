@@ -48,7 +48,7 @@ Times are related by the relations
 &quot;<i>s</i> is in the past of <i>t</i>&quot; and
 &quot;<i>s</i> is in the future of <i>t</i>&quot;.
 We can use temporal logic to express statements with reference to some or all
-future or past times, such as
+times, future or past, such as
 &quot;<i>p</i> or <i>q</i> will be true&quot; or
 &quot;if <i>r</i> was always true, <i>r</i> is true&quot;.
 These are useful, for instance, for verifying the eventual proper behavior of
@@ -64,7 +64,7 @@ This lets us express such statements as
 &quot;when program <i>a</i> finishes, <i>p</i> is true&quot; and
 &quot;if <i>p</i> or <i>q</i> are true, then when program <i>b</i> finishes, <i>q</i> is true&quot;.
 This can be useful for formally specifying correctness properties, however the
-generality of the technique has mostly seen only theoretical use.
+technique has mostly seen only theoretical use to the author's knowledge.
 </p>
 
 <h2>Introduction</h2>
@@ -80,9 +80,9 @@ essential details of a situation.
 </p>
 <p>
 Importantly, expressing a problem formally often makes it possible to solve the 
-problem mechanically. In these modern times, a computer can answer vast logical 
-questions very quickly, so knowing what logics are available
-adds a powerful tool to your arsenal.
+problem mechanically. In these modern times, computer systems can answer vast
+logical questions very quickly, so it is helpful to know what logics are studied
+and what automatic methods are available for them.
 </p>
 
 <h3>Propositions</h3>
@@ -106,6 +106,10 @@ This implies that, absent any other statements, there is no relation between
 claims about truth. If we want to claim that <i>p</i> is true, we must also
 <i>assert</i> that <i>p</i> is true.
 </p>
+<p>
+We also recognize an atomic proposition $\bot$ (&quot;bottom&quot;
+or &quot;falsum&quot;) which is always false. 
+</p>
 
 <h3>Connectives</h3>
 <p>
@@ -120,6 +124,32 @@ is read as &quot;and&quot;, and the combined proposition is the statement
 <p>
 By using a standard method of connecting existing propositions to name this new
 one, we get a name that is much more useful. If we know that both proposition <i>p</i> and proposition <i>q</i> are true, we automatically know that proposition $p \wedge q$ is true, and this is without having to know any details about what what these propositions mean.
+</p>
+<p>We can guess pretty easily what &quot;and&quot; is supposed to mean, but in
+the interest of formality we specify the meaning of propositions formally with a
+<i>truth table</i> like so:</p>
+<p>$\begin{array}{c|c|c} \varphi &amp; \psi &amp; \varphi \wedge \psi \\ \hline
+\text{T} &amp; \text{T} &amp; \text{T} \\ \hline
+\text{T} &amp; \text{F} &amp; \text{F} \\ \hline
+\text{F} &amp; \text{T} &amp; \text{F} \\ \hline
+\text{F} &amp; \text{F} &amp; \text{F} 
+\end{array}$</p>
+<p>The Greek letters $\varphi$ (phi) and $\psi$ (psi) here are used to indicate 
+any proposition, not just an atomic proposition.</p>
+<p>
+The most heavily used connective is going to be $\rightarrow$, &quot;implies&quot;. &quot;If <i>p</i> then <i>q</i>&quot; is expressed as $p \rightarrow q$.</p>
+<p>$\begin{array}{c|c|c} \varphi &amp; \psi &amp; \varphi \rightarrow \psi \\ \hline
+\text{T} &amp; \text{T} &amp; \text{T} \\ \hline
+\text{T} &amp; \text{F} &amp; \text{F} \\ \hline
+\text{F} &amp; \text{T} &amp; \text{T} \\ \hline
+\text{F} &amp; \text{F} &amp; \text{T} 
+\end{array}$
+</p>
+<p>When $\varphi$ is false, $\varphi \rightarrow \psi$ is always true,
+regardless of whether $\psi$ is true or false.
+It only makes a claim when $\varphi$ is true,
+&quot;when $\varphi$ is true, $\psi$ is true&quot;. This is only
+false when $\varphi$ is true yet $\psi$ is false.
 </p>
 
 </div>
