@@ -11,11 +11,21 @@ div.subbody {
   margin-right:auto;
 }
 </style>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: { inlineMath: [['$','$']] }
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
 </head>
 
 <body>
 <div class="subbody">
 <h1>Modal logics, temporal and dynamic</h1>
+<small>by Adam Gashlin</small>
 
 <h2>Overview</h2>
 <p>
@@ -68,6 +78,12 @@ This abstraction allows logicians to study the structure of logic quite apart
 from dealing with the specifics of arguments, and it encourages attention to the
 essential details of a situation.
 </p>
+<p>
+Importantly, expressing a problem formally often makes it possible to solve the 
+problem mechanically. In these modern times, a computer can answer vast logical 
+questions very quickly, so knowing what logics are available
+adds a powerful tool to your arsenal.
+</p>
 
 <h3>Propositions</h3>
 <p>
@@ -93,7 +109,17 @@ claims about truth. If we want to claim that <i>p</i> is true, we must also
 
 <h3>Connectives</h3>
 <p>
-Propositional logic gets interesting once we start using logical connectives. If we wanted to state &quot;my pants are blue and my hair is black&quot;, we might introduce a new atomic
+Propositional logic gets interesting once we start using logical connectives.
+We might introduce a new atomic proposition
+<i>r</i> = &quot;my pants are blue and my hair is black&quot;, but because the
+statement is a combination of propositions <i>p</i> and <i>q</i> that we have
+already defined, we can instead call it $p \wedge q$. The $\wedge$ in the middle
+is read as &quot;and&quot;, and the combined proposition is the statement
+&quot;both <i>p</i> and <i>q</i> are true&quot;.
+</p>
+<p>
+By using a standard method of connecting existing propositions to name this new
+one, we get a name that is much more useful. If we know that both proposition <i>p</i> and proposition <i>q</i> are true, we automatically know that proposition $p \wedge q$ is true, and this is without having to know any details about what what these propositions mean.
 </p>
 
 </div>
