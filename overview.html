@@ -9,6 +9,7 @@ div.subbody {
   max-width:960px;
   margin-left:auto;
   margin-right:auto;
+  font-family:Times, serif;
 }
 </style>
 
@@ -30,21 +31,21 @@ MathJax.Hub.Config({
 <h2>Overview</h2>
 <p>
 This report deals with a branch of formal logic called
-Modal Logic, in which we are concerned with the truth of propositions in various
-contexts, and how those contexts relate to each other logically.
-Example contexts include points in time, conceivable worlds,
+Modal Logic, in which we are concerned with the truth of propositions in
+different situations, and how those situations relate to each other logically.
+Example situations include points in time, conceivable worlds,
 believable knowledge, and states of a computation.</p>
 <p>
 There is a good deal of theoretical mechanism that applies equally well to many
 kinds of Modal Logic, such as a the unifying Kripke semantics. The essential
-core of Kripke semantics is a binary relation on the &quot;worlds&quot;, which
-defines how propositions in one world may be referenced by propositions in
-another. I will give examples for these vague remarks for the two logics we will
-consider, Temporal Logic and Dynamic Logic.
+core of Kripke semantics is a binary relation on the situational
+&quot;worlds&quot;, which defines how propositions in one world may be
+referenced by propositions in another. I will give examples for these vague
+remarks for the two logics we will consider, Temporal Logic and Dynamic Logic.
 </p>
 <p>
-In Temporal Logic the contexts are points in time.
-Times are related by the relations
+In Temporal Logic the &quot;worlds&quot; are points in time.
+Times are related by
 &quot;<i>s</i> is in the past of <i>t</i>&quot; and
 &quot;<i>s</i> is in the future of <i>t</i>&quot;.
 We can use temporal logic to express statements with reference to some or all
@@ -53,105 +54,95 @@ times, future or past, such as
 &quot;if <i>r</i> was always true, <i>r</i> is true&quot;.
 These are useful, for instance, for verifying the eventual proper behavior of
 programs,
-invariants such as &quot;if the operating system gets a request, it will
-eventually grant the request&quot;.
+invariants such as &quot;if the operating system gets a request, the request
+will be granted&quot;.
 </p>
 
 <p>
-In Dynamic Logic the contexts are the states of an executing program,
-and there are infinitely many relations: the input/output relations of programs.
+In Dynamic Logic the &quot;worlds&quot; are the states of an executing program,
+and the relations are the input/output relation of each program.
 This lets us express such statements as
 &quot;when program <i>a</i> finishes, <i>p</i> is true&quot; and
 &quot;if <i>p</i> or <i>q</i> are true, then when program <i>b</i> finishes, <i>q</i> is true&quot;.
-This can be useful for formally specifying correctness properties, however the
-technique has mostly seen only theoretical use to the author's knowledge.
+This can be useful for formally specifying correctness properties, such as
+&quot;if <i>a</i> is positive before the loop, <i>a</i> is zero after the loop
+terminates&quot;.
 </p>
 
 <h2>Introduction</h2>
 <h3>Formal logic</h3>
 <p>
 Our concern in a formal logic is to abstract away every detail that is not
-necessary for preserving the validity of statements. Much reasoning is valid on 
-a formal level: as long as the proper form is followed an argument will be
-valid.
-This abstraction allows logicians to study the structure of logic quite apart
-from dealing with the specifics of arguments, and it encourages attention to the
+necessary for preserving the validity of statements. Much reasoning is valid on
+a formal level: a properly formed argument is assured to be valid by virtue of
+its form.
+</p>
+<p>
+This abstraction allows logicians to study the structure of logic apart from
+dealing with the specifics of arguments, and it encourages attention to the
 essential details of a situation.
 </p>
 <p>
-Importantly, expressing a problem formally often makes it possible to solve the 
-problem mechanically. In these modern times, computer systems can answer vast
-logical questions very quickly, so it is helpful to know what logics are studied
-and what automatic methods are available for them.
+Most of the operations of formal logic can be executed mechanically, to varying
+degrees of effectiveness. If there are efficient automatic methods available for
+a logic, there can be great practical value for expressing a problem in that
+logic.
 </p>
 
 <h3>Propositions</h3>
 <p>
-In the case of propositional logic, we reduce statements to atomic propositions, joined by a very small family of logical connectives into larger propositions.</p>
-<p>
-A <i>proposition</i> is simply a statement which we regard to be true or false.
-An <i>atomic proposition</i> is defined to have no further internal structure that we are interested in.</p>
-<p>So if we have two atomic propositions
+A <i>proposition</i> is simply a statement which we regard as true or false.
+An <i>atomic proposition</i> is defined to have no further internal structure
+that we are interested in.
+In propositional logic, we reduce statements to atomic propositions, joined by
+a very small family of connectives into larger propositions.</p>
+<p>Consider the two atomic propositions
 <ul>
 <li><i>p</i> = &quot;My pants are blue&quot;</li>
-<li><i>q</i> = &quot;My hair is black&quot;</li>
+<li><i>q</i> = &quot;My hair is black&quot;.</li>
 </ul>
-we are ignoring any interesting contrasts or commonalities,
-such as that both of these statements are about me and involve colors.
-An atomic proposition only has an identity, like the
-letters <i>p</i> and <i>q</i> here, which lets us know whether propositions can
-be considered identical.<br>
-This implies that, absent any other statements, there is no relation between
-<i>p</i> and <i>q</i>; setting up these propositions doesn't even make any
-claims about truth. If we want to claim that <i>p</i> is true, we must also
-<i>assert</i> that <i>p</i> is true.
-</p>
+We are ignoring as irrelevant any contrasts or commonalities, such as that both
+of these statements are about me and involve colors.
+An atomic proposition only has an identity, like the letters <i>p</i> and
+<i>q</i> here, which lets us know whether propositions can be considered
+identical.</p>
 <p>
-We also recognize an atomic proposition $\bot$ (&quot;bottom&quot;
-or &quot;falsum&quot;) which is always false. 
+We also recognize an atomic proposition $\bot$ (&quot;falsum&quot;) which is
+always false.
 </p>
 
 <h3>Connectives</h3>
 <p>
 Propositional logic gets interesting once we start using logical connectives.
-We might introduce a new atomic proposition
-<i>r</i> = &quot;my pants are blue and my hair is black&quot;, but because the
-statement is a combination of propositions <i>p</i> and <i>q</i> that we have
-already defined, we can instead call it $p \wedge q$. The $\wedge$ in the middle
-is read as &quot;and&quot;, and the combined proposition is the statement
-&quot;both <i>p</i> and <i>q</i> are true&quot;.
+If we wanted a proposition that means &quot;my pants are blue and my hair is
+black&quot;, we might introduce a new atomic proposition called <i>r</i>, but
+this would be a poor choice.
+For instance, it would allow us to make the statement
+&quot;<i>r</i>, but neither <i>p</i> nor <i>q</i>&quot;. This is never true (it
+is a <i>contradiction</i>), but that is not clear from the form of the
+statement.
 </p>
 <p>
-By using a standard method of connecting existing propositions to name this new
-one, we get a name that is much more useful. If we know that both proposition <i>p</i> and proposition <i>q</i> are true, we automatically know that proposition $p \wedge q$ is true, and this is without having to know any details about what what these propositions mean.
+Instead of <i>r</i>, we can call this statement $p \wedge q$. The propositional
+connective $\wedge$ in the middle is read as &quot;and&quot;, and the combined
+proposition is the statement &quot;both <i>p</i> and <i>q</i> are true&quot;.
 </p>
-<p>We can guess pretty easily what &quot;and&quot; is supposed to mean, but in
-the interest of formality we specify the meaning of propositions formally with a
-<i>truth table</i> like so:</p>
-<p>$\begin{array}{c|c|c} \varphi &amp; \psi &amp; \varphi \wedge \psi \\ \hline
-\text{T} &amp; \text{T} &amp; \text{T} \\ \hline
-\text{T} &amp; \text{F} &amp; \text{F} \\ \hline
-\text{F} &amp; \text{T} &amp; \text{F} \\ \hline
-\text{F} &amp; \text{F} &amp; \text{F} 
-\end{array}$</p>
-<p>The Greek letters $\varphi$ (phi) and $\psi$ (psi) here are used to indicate 
-any proposition, not just an atomic proposition.</p>
 <p>
-The most heavily used connective is going to be $\rightarrow$, &quot;implies&quot;. &quot;If <i>p</i> then <i>q</i>&quot; is expressed as $p \rightarrow q$.</p>
-<p>$\begin{array}{c|c|c} \varphi &amp; \psi &amp; \varphi \rightarrow \psi \\ \hline
-\text{T} &amp; \text{T} &amp; \text{T} \\ \hline
-\text{T} &amp; \text{F} &amp; \text{F} \\ \hline
-\text{F} &amp; \text{T} &amp; \text{T} \\ \hline
-\text{F} &amp; \text{F} &amp; \text{T} 
-\end{array}$
+By using this standard method of connecting existing proposition to name this
+new one, we get a name that is much more useful. If we know that both
+proposition <i>p</i> and proposition <i>q</i> are true, we automatically know
+that proposition $p \wedge q$ is true, without having to look up any details
+about what these propositions mean.
+Likewise the contradiction from earlier would be expressed as
+&quot;$p \wedge q$ but neither <i>p</i> nor <i>q</i>&quot;, in which the
+contradiction is immediately apparent.
 </p>
-<p>When $\varphi$ is false, $\varphi \rightarrow \psi$ is always true,
-regardless of whether $\psi$ is true or false.
-It only makes a claim when $\varphi$ is true,
-&quot;when $\varphi$ is true, $\psi$ is true&quot;. This is only
-false when $\varphi$ is true yet $\psi$ is false.
+<p>
+We use $\neg p$ to mean &quot;not <i>p</i>&quot;, so the contradiction
+would be stated formally as $p \wedge q \wedge \neg p \wedge \neg q$.
 </p>
 
-</div>
+<h3>Evaluation</h3>
+
 </body>
 </html>
