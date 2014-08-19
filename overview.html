@@ -19,7 +19,7 @@ MathJax.Hub.Config({
 });
 </script>
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+<script type="text/javascript" src="MathJax-2.4-latest/MathJax.js?config=TeX-AMS_HTML"></script>
 
 </head>
 
@@ -40,15 +40,15 @@ There is a good deal of theoretical mechanism that applies equally well to many
 kinds of Modal Logic, such as a the unifying Kripke semantics. The essential
 core of Kripke semantics is a binary relation on the situational
 &quot;worlds&quot;, which defines how propositions in one world may be
-referenced by propositions in another. I will give examples for these vague
-remarks for the two logics we will consider, Temporal Logic and Dynamic Logic.
+referenced by propositions in another. This report examines in detail two
+particular families of modal logic, Temporal Logic and Dynamic Logic.
 </p>
 <p>
-In Temporal Logic the &quot;worlds&quot; are points in time.
+In temporal logic truth is given for particular points in time.
 Times are related by
 &quot;<i>s</i> is in the past of <i>t</i>&quot; and
 &quot;<i>s</i> is in the future of <i>t</i>&quot;.
-We can use temporal logic to express statements with reference to some or all
+We can express statements with reference to some or all
 times, future or past, such as
 &quot;<i>p</i> or <i>q</i> will be true&quot; or
 &quot;if <i>r</i> was always true, <i>r</i> is true&quot;.
@@ -59,7 +59,7 @@ will be granted&quot;.
 </p>
 
 <p>
-In Dynamic Logic the &quot;worlds&quot; are the states of an executing program,
+In dynamic logic, truths hold for states of an executing program,
 and the relations are the input/output relation of each program.
 This lets us express such statements as
 &quot;when program <i>a</i> finishes, <i>p</i> is true&quot; and
@@ -76,30 +76,26 @@ Our concern in a formal logic is to abstract away every detail that is not
 necessary for preserving the validity of statements. Much reasoning is valid on
 a formal level: a properly formed argument is assured to be valid by virtue of
 its form.
-</p>
-<p>
 This abstraction allows logicians to study the structure of logic apart from
 dealing with the specifics of arguments, and it encourages attention to the
 essential details of a situation.
 </p>
 <p>
 Most of the operations of formal logic can be executed mechanically, to varying
-degrees of effectiveness. If there are efficient automatic methods available for
-a logic, there can be great practical value for expressing a problem in that
-logic.
+degrees of effectiveness. There can be great practical value in expressing a
+problem in the terms of a logic, if there are efficient automatic methods
+available.
 </p>
 
 <h3>Propositions</h3>
 <p>
 A <i>proposition</i> is simply a statement which we regard as true or false.
-An <i>atomic proposition</i> is defined to have no further internal structure
+An <i>atomic proposition</i> is defined to have no internal structure
 that we are interested in.
-In propositional logic, we reduce statements to atomic propositions, joined by
-a very small family of connectives into larger propositions.</p>
 <p>Consider the two atomic propositions
 <ul>
 <li><i>p</i> = &quot;My pants are blue&quot;</li>
-<li><i>q</i> = &quot;My hair is black&quot;.</li>
+<li><i>q</i> = &quot;My hair is black&quot;</li>
 </ul>
 By calling these atomic, we are ignoring as irrelevant any common details,
 such as that both of these statements are about me and involve colors.
@@ -113,33 +109,34 @@ always false.
 
 <h3>Connectives</h3>
 <p>
-Propositional logic gets interesting once we start using logical connectives.
+In propositional logic, we reduce statements to atomic propositions, joined by
+a small family of connectives into larger propositions.
 If we wanted a proposition that means &quot;my pants are blue and my hair is
 black&quot;, we might introduce a new atomic proposition called <i>r</i>, but
 this would be a poor choice.
 For instance, it would allow us to make the statement
-&quot;<i>r</i>, but neither <i>p</i> nor <i>q</i>&quot;. This is never true (it
-is a <i>contradiction</i>), but that is not clear from the form of the
-statement.
+&quot;<i>r</i>, but not <i>p</i>&quot;. This is never true given the earlier
+definition of <i>p</i> (it is a <i>contradiction</i>), but that is not clear
+from the form of the statement.
 </p>
 <p>
-Instead of <i>r</i>, we can call this proposition $p \wedge q$.
+Instead of <i>r</i>, we call this proposition $p \wedge q$.
 The propositional connective $\wedge$ in the middle is read as &quot;and&quot;, and the combined proposition is the statement &quot;both <i>p</i> and <i>q</i>
 are true&quot;.
 </p>
 <p>
-By using this standard method of connecting existing proposition to name this
+By using this standard method of connecting existing propositions to name a
 new one, we get a name that is much more useful. If we know that both
 proposition <i>p</i> and proposition <i>q</i> are true, we automatically know
 that proposition $p \wedge q$ is true, without having to look up any details
 about what these propositions mean.
 Likewise the contradiction from earlier would be expressed as
-&quot;$p \wedge q$ but neither <i>p</i> nor <i>q</i>&quot;, in which the
+&quot;$p \wedge q$ but not <i>p</i>&quot;, in which the
 contradiction is immediately apparent.
 </p>
 <p>
 We use $\neg p$ to mean &quot;not <i>p</i>&quot;, so the contradiction
-would be stated fully formally as $p \wedge q \wedge \neg p \wedge \neg q$.
+would be stated fully formally as $p \wedge q \wedge \neg p$.
 </p>
 
 <h3>Evaluation</h3>
