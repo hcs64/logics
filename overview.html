@@ -31,7 +31,7 @@ MathJax.Hub.Config({
 <body>
 <div class="subbody">
 <h1>Modal logics, temporal and dynamic</h1>
-<small>by Adam Gashlin</small>
+<small>Adam Gashlin</small>
 
 <h2>Overview</h2>
 <p>
@@ -208,28 +208,28 @@ Thus for the this model, with the valuation
 $(\neg p \wedge q) \vee (p \wedge \neg q)$ is true.
 </p>
 
-<h3>Evaluation by definition</h3>
+<h3>Evaluation by definition of $M \Vdash \varphi$</h3>
 
 <p>
 Formally, we treat evaluation as extending the valuation to cover all possible
 propositions formed from the atomic propositions. 
 
-If a proposition $\varphi$ is true in model $\frak{M}$, we write
-$\frak{M} \Vdash \varphi$. 
+If a proposition $\varphi$ is true in model <i>M</i>, we write
+$M \Vdash \varphi$.
 <br><br>
 $
 \begin{align}
-\frak{M} &amp; \Vdash p &amp;&amp;
+M &amp; \Vdash p &amp;&amp;
 \text{ if $p$ is a true atomic proposition} \\
 
-\frak{M} &amp; \Vdash \neg \varphi &amp;&amp;
-\text{ if $\frak{M} \Vdash \varphi$ is not true} \\
+M &amp; \Vdash \neg \varphi &amp;&amp;
+\text{ if $M \Vdash \varphi$ is not true} \\
 
-\frak{M} &amp; \Vdash \varphi \wedge \psi &amp;&amp;
-\text{ if $\frak{M} \Vdash \varphi$ and $\frak{M} \Vdash \psi$} \\
+M &amp; \Vdash \varphi \wedge \psi &amp;&amp;
+\text{ if $M \Vdash \varphi$ and $M \Vdash \psi$} \\
 
-\frak{M} &amp; \Vdash \varphi \vee \psi &amp;&amp;
-\text{ if one or both of $\frak{M} \Vdash \varphi$ and $\frak{M} \Vdash \psi$}
+M &amp; \Vdash \varphi \vee \psi &amp;&amp;
+\text{ if one or both of $M \Vdash \varphi$ and $M \Vdash \psi$}
 \end{align}
 $
 <br><br>
