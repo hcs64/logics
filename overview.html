@@ -74,6 +74,8 @@ This can be useful for formally specifying correctness properties, such as
 terminates&quot;.
 </p>
 
+<hr>
+
 <h2>Introduction</h2>
 <h3>Formal logic</h3>
 <p>
@@ -197,11 +199,11 @@ we arrive at statements whose truth can be determined directly from the model,
 then we build back up to the full statement. This can be pictured as building
 a tree 
 <br><br>
-<img src="xor_tree_build.png">
+<img src="xor_tree_build.png" alt="a tree is constructed from the analysis of a proposition">
 <br><br>
 and filling it with truth values.
 <br><br>
-<img src="xor_tree_eval.png">
+<img src="xor_tree_eval.png" alt="truth values propagate from the leaves of a tree">
 
 Thus for the this model, with the valuation
 &quot;<i>p</i> is true, <i>q</i> is false&quot;, 
@@ -235,7 +237,8 @@ $
 <br><br>
 Note that only one of these rules applies for every possible proposition,
 so if the left hand side matches the form of a proposition but the condition on 
-the right hand side doesn't hold, then the proposition is false.
+the right hand side doesn't hold, then the proposition is false. If
+$M \Vdash \varphi$ is not true, we instead write $M \not \Vdash \varphi$.
 </p>
 
 <!--
@@ -245,6 +248,52 @@ $\rightarrow$, &quot;implies&quot;, and an atomic proposition that is always
 false, $\bottom$, &quote;falsum&quot;. The connectives we have been seeing,
 $\wedge$, $\vee$ and $\neg$, can then be considered as 
 -->
+
+<hr>
+
+<h2>Modal logic</h2>
+
+<h3>Multiple situations</h3>
+<p>
+So far everything discussed holds for classical propositional logic as well as
+modal logic.
+The first place where modal logic differs is that a model can have multiple
+&quot;situations&quot;, &quot;worlds&quot;, or &quot;states&quot;,
+where classical logic considers only one set of truths at a time.
+</p>
+<p>
+As an example, we can have one state, call it <i>s</i>, where the propositions
+<i>p</i> and <i>q</i> are both true.
+On the other hand, we may have a state <i>t</i>, where only <i>p</i> is true
+and <i>q</i> is false.
+In modal logic a model <i>M</i> has at least three components: the set of states
+$S_M$, a valuation $V_M$, and at least one relation $R_M$ which we will cover in
+the next section.
+In the example, $S_M = \{s,t\}$, and $V_M$ is a
+function where $V_M(s) = \{p,q\}$ and $V_M(t) = \{p\}$.
+</p>
+<p>
+To show that we are discussing truths in a particular state <i>s</i>, we write
+$M \Vdash_s$ instead of simply $M \Vdash$. In the running example,
+$M \Vdash_s p$ and $M \Vdash_s q$, as well as $M \Vdash_t p$. However it is not
+the case that $M \Vdash_t q$, so we write $M \not{\Vdash_t} q$. We can also
+use the earlier definition of $\Vdash$ to extend $\Vdash_s$ and $\Vdash_t$ to
+larger propositions, for instance $M \Vdash_s p \wedge q$ and $M \Vdash_t p \wedge \neg q$.
+</p>
+<p>
+Often we want to reason without knowing what state is the
+&quot;real world&quot;.
+If we find a proposition that is true across all states, we can use it without
+reference to a particular state.
+If this is so we say the proposition is true not only in a state, but it is
+<i>true in the model</i>. We write $\Vdash$ without a subscript to indicate
+this, for instance $M \Vdash p$ or $M \Vdash q \vee p$.
+
+<h3>Relating situations</h3>
+The real power of modal logic comes from being able to make reference to
+other states.
+
+<h3>Frames</h3>
 
 </div>
 </body>
