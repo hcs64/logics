@@ -253,24 +253,24 @@ $\wedge$, $\vee$ and $\neg$, can then be considered as
 
 <h2>Modal logic</h2>
 
-<h3>Multiple situations</h3>
+<h3>Multiple states</h3>
 <p>
 So far everything discussed holds for classical propositional logic as well as
 modal logic.
 The first place where modal logic differs is that a model can have multiple
 &quot;situations&quot;, &quot;worlds&quot;, or &quot;states&quot;,
-where classical logic considers only one set of truths at a time.
+whereas classical logic considers only one set of truths at a time.
 </p>
 <p>
-As an example, we can have one state, call it <i>s</i>, where the propositions
-<i>p</i> and <i>q</i> are both true.
-On the other hand, we may have a state <i>t</i>, where only <i>p</i> is true
+As an example, say we have one state, call it <i>s</i>, where the atomic
+propositions <i>p</i> and <i>q</i> are both true.
+We also have a state <i>t</i>, where only <i>p</i> is true
 and <i>q</i> is false.
-In modal logic a model <i>M</i> has at least three components: the set of states
-$S_M$, a valuation $V_M$, and at least one relation $R_M$ which we will cover in
-the next section.
-In the example, $S_M = \{s,t\}$, and $V_M$ is a
-function where $V_M(s) = \{p,q\}$ and $V_M(t) = \{p\}$.
+In modal logic a model <i>M</i> has at least two components: the set of states
+$S_M$ and a valuation $V_M$.
+In the example, $S_M = \{s,t\}$, the two states, and $V_M$ is a
+function that gives the atomic propositions that are true in a specified state:
+$V_M(s) = \{p,q\}$ and $V_M(t) = \{p\}$.
 </p>
 <p>
 To show that we are discussing truths in a particular state <i>s</i>, we write
@@ -285,13 +285,51 @@ Often we want to reason without knowing what state is the
 &quot;real world&quot;.
 If we find a proposition that is true across all states, we can use it without
 reference to a particular state.
-If this is so we say the proposition is true not only in a state, but it is
-<i>true in the model</i>. We write $\Vdash$ without a subscript to indicate
-this, for instance $M \Vdash p$ or $M \Vdash q \vee p$.
+If this is so we say the proposition is <i>true in the model</i>, and we write
+$M \Vdash \varphi$ without a subscript.
+In the example we have $M \Vdash p$ or $M \Vdash q \vee p$, for instance.
+</p>
 
-<h3>Relating situations</h3>
+<h3>Referring to other states</h3>
+<p>
 The real power of modal logic comes from being able to make reference to
 other states.
+For this purpose we add two symbols to our proposition language:
+$\newcommand{\box}{{\scriptsize \square}} \box$ (&quot;box&quot;) and $\diamond$, (&quot;diamond&quot;). These are used to prefix
+other propositions to modify their interpretation.
+$\box \varphi$ means that in all related states (to be defined in the next
+section),
+$\varphi$ is true, whereas $\diamond \varphi$ asserts that there is at least one
+related state where $\varphi$ is true.
+</p>
+<p>
+Note that $\box \varphi$ and $\diamond \varphi$ are only about related
+states, they make no reference to what is true in the current state. To claim
+that $\varphi$ is true in the current state and in all related states, use the
+proposition $\varphi \wedge \box \varphi$.
+Also note that $\box \varphi$ can be true even if there are no states where
+$\varphi$ is true; this is the case when there are no related states.
+</p>
+<p>
+We can formally define $\box$ and $\diamond$ by adding the following rules to
+our definition of $\Vdash$:
+<br><br>
+$
+\begin{align}
+M &amp; \Vdash_s \box \varphi &amp;&amp;
+\text{ if for all states $t$ where $sR_{M}t$, $M \Vdash_t \varphi$ } \\
+M &amp; \Vdash_s \diamond \varphi &amp;&amp;
+\text{ if there is a state $t$ such that $sR_{M}t$ and $M \Vdash_t \varphi$ }
+\end{align}
+$
+<br><br>
+
+$sR_{M}t$ means that <i>s</i> is related to <i>t</i> by relation $R_{M}$, which we
+will explain in the next section.
+
+</p>
+
+<h3>Related states</h3>
 
 <h3>Frames</h3>
 
