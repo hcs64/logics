@@ -11,6 +11,11 @@ div.subbody {
   margin-right:auto;
   font-family:Times, serif;
 }
+img {
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+}
 </style>
 
 <script type="text/x-mathjax-config">
@@ -112,15 +117,15 @@ always false.
 In propositional logic, we reduce statements to atomic propositions, joined by
 a small family of connectives into larger propositions.
 If we wanted a proposition that means &quot;my pants are blue and my hair is
-black&quot;, we might introduce a new atomic proposition called <i>r</i>, but
+black&quot;, we might introduce a new atomic proposition called <i>s</i>, but
 this would be a poor choice.
 For instance, it would allow us to make the statement
-&quot;<i>r</i>, but not <i>p</i>&quot;. This is never true given the earlier
+&quot;<i>s</i>, but not <i>p</i>&quot;. This is never true given the earlier
 definition of <i>p</i> (it is a <i>contradiction</i>), but that is not clear
 from the form of the statement.
 </p>
 <p>
-Instead of <i>r</i>, we call this proposition $p \wedge q$.
+Instead of <i>s</i>, we can call this proposition $p \wedge q$.
 The propositional connective $\wedge$ in the middle is read as &quot;and&quot;, and the combined proposition is the statement &quot;both <i>p</i> and <i>q</i>
 are true&quot;.
 </p>
@@ -134,10 +139,12 @@ Likewise the contradiction from earlier would be expressed as
 &quot;$p \wedge q$ but not <i>p</i>&quot;, in which the
 contradiction is immediately apparent.
 </p>
+<!--
 <p>
 We use $\neg p$ to mean &quot;not <i>p</i>&quot;, so the contradiction
 would be stated fully formally as $p \wedge q \wedge \neg p$.
 </p>
+-->
 
 <h3>Evaluation</h3>
 <p>
@@ -177,9 +184,45 @@ both x and y are true, but the truth table tells us unambiguously that
 $\varphi$ <b>T</b>rue and $\psi$ <b>T</b>rue makes $\varphi \vee \psi$ <b>T</b>rue.
 </p>
 
-<p>
-Evaluation can be pictured as filling in a tree:
+<p>Consider a more complicated statement such as
+$(\neg p \wedge q) \vee (p \wedge \neg q)$.
+First off, $\neg q$ means &quot;not q&quot;, which has the short truth table
+$$\begin{array}{c|c} \varphi &amp; \neg \varphi \\ \hline
+\text{T} &amp; \text{F} \\ \hline
+\text{F} &amp; \text{T}
+\end{array}$$
+At this point it is helpful to think of each of the atomic propositions
+<i>p</i> and <i>q</i> as simply something that can be true or false.
+If we say that <i>p</i> is true and <i>q</i> is false, this forms our
+<i>model</i> for the state of the world, our model is formed from the
+<i>valuation</i> &quot;<i>p</i> is true, <i>q</i> is false&quot;.
+To evaluate $(\neg p \wedge q) \vee (p \wedge \neg q)$, we break it down until
+we arrive at statements whose truth can be determined directly from the model,
+then we build back up to the full statement. This can be pictured as building
+a tree 
+<br><br>
+<img src="xor_tree_build.png">
+<br><br>
+and filling it with truth values.
+<br><br>
+<img src="xor_tree_eval.png">
+
+Thus for the this model, with the valuation
+&quot;<i>p</i> is true, <i>q</i> is false&quot;, 
+$(\neg p \wedge q) \vee (p \wedge \neg q)$ is true.
 </p>
+
+<p>
+Formally, we treat evaluation as extending the valuation to cover all possible
+propositions formed from the atomic propositions. 
+
+
+In this case, that would
+evolve as follows:
+</p>
+
+<h3>Implication</h3>
+
 </div>
 </body>
 </html>
