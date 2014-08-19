@@ -210,35 +210,35 @@ Thus for the this model, with the valuation
 $(\neg p \wedge q) \vee (p \wedge \neg q)$ is true.
 </p>
 
-<h3>Evaluation by definition of $M \Vdash \varphi$</h3>
+<h3>Evaluation by definition of $M \vDash \varphi$</h3>
 
 <p>
 Formally, we treat evaluation as extending the valuation to cover all possible
 propositions formed from the atomic propositions. 
 
 If a proposition $\varphi$ is true in model <i>M</i>, we write
-$M \Vdash \varphi$.
+$M \vDash \varphi$.
 <br><br>
 $
 \begin{align}
-M &amp; \Vdash p &amp;&amp;
+M &amp; \vDash p &amp;&amp;
 \text{ if $p$ is a true atomic proposition} \\
 
-M &amp; \Vdash \neg \varphi &amp;&amp;
-\text{ if $M \Vdash \varphi$ is not true} \\
+M &amp; \vDash \neg \varphi &amp;&amp;
+\text{ if $M \vDash \varphi$ is not true} \\
 
-M &amp; \Vdash \varphi \wedge \psi &amp;&amp;
-\text{ if $M \Vdash \varphi$ and $M \Vdash \psi$} \\
+M &amp; \vDash \varphi \wedge \psi &amp;&amp;
+\text{ if $M \vDash \varphi$ and $M \vDash \psi$} \\
 
-M &amp; \Vdash \varphi \vee \psi &amp;&amp;
-\text{ if one or both of $M \Vdash \varphi$ and $M \Vdash \psi$}
+M &amp; \vDash \varphi \vee \psi &amp;&amp;
+\text{ if one or both of $M \vDash \varphi$ and $M \vDash \psi$}
 \end{align}
 $
 <br><br>
 Note that only one of these rules applies for every possible proposition,
 so if the left hand side matches the form of a proposition but the condition on 
 the right hand side doesn't hold, then the proposition is false. If
-$M \Vdash \varphi$ is not true, we instead write $M \not \Vdash \varphi$.
+$M \vDash \varphi$ is not true, we instead write $M \not \vDash \varphi$.
 </p>
 
 <!--
@@ -274,11 +274,11 @@ $V_M(s) = \{p,q\}$ and $V_M(t) = \{p\}$.
 </p>
 <p>
 To show that we are discussing truths in a particular state <i>s</i>, we write
-$M \Vdash_s$ instead of simply $M \Vdash$. In the running example,
-$M \Vdash_s p$ and $M \Vdash_s q$, as well as $M \Vdash_t p$. However it is not
-the case that $M \Vdash_t q$, so we write $M \not{\Vdash_t} q$. We can also
-use the earlier definition of $\Vdash$ to extend $\Vdash_s$ and $\Vdash_t$ to
-larger propositions, for instance $M \Vdash_s p \wedge q$ and $M \Vdash_t p \wedge \neg q$.
+$M \vDash_s$ instead of simply $M \vDash$. In the running example,
+$M \vDash_s p$ and $M \vDash_s q$, as well as $M \vDash_t p$. However it is not
+the case that $M \vDash_t q$, so we write $M \not{\vDash_t} q$. We can also
+use the earlier definition of $\vDash$ to extend $\vDash_s$ and $\vDash_t$ to
+larger propositions, for instance $M \vDash_s p \wedge q$ and $M \vDash_t p \wedge \neg q$.
 </p>
 <p>
 Often we want to reason without knowing what state is the
@@ -286,8 +286,8 @@ Often we want to reason without knowing what state is the
 If we find a proposition that is true across all states, we can use it without
 reference to a particular state.
 If this is so we say the proposition is <i>true in the model</i>, and we write
-$M \Vdash \varphi$ without a subscript.
-In the example we have $M \Vdash p$ or $M \Vdash q \vee p$, for instance.
+$M \vDash \varphi$ without a subscript.
+In the example we have $M \vDash p$ or $M \vDash q \vee p$, for instance.
 </p>
 
 <h3>Referring to other states</h3>
@@ -312,14 +312,14 @@ $\varphi$ is true; this is the case when there are no related states.
 </p>
 <p>
 We can formally define $\box$ and $\diamond$ by adding the following rules to
-our definition of $\Vdash$:
+our definition of $\vDash$:
 <br><br>
 $
 \begin{align}
-M &amp; \Vdash_s \box \varphi &amp;&amp;
-\text{ if for all states $t$ where $sR_{M}t$, $M \Vdash_t \varphi$ } \\
-M &amp; \Vdash_s \diamond \varphi &amp;&amp;
-\text{ if there is a state $t$ such that $sR_{M}t$ and $M \Vdash_t \varphi$ }
+M &amp; \vDash_s \box \varphi &amp;&amp;
+\text{ if for all states $t$ where $sR_{M}t$, $M \vDash_t \varphi$ } \\
+M &amp; \vDash_s \diamond \varphi &amp;&amp;
+\text{ if there is a state $t$ such that $sR_{M}t$ and $M \vDash_t \varphi$ }
 \end{align}
 $
 <br><br>
