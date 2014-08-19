@@ -330,8 +330,79 @@ will explain in the next section.
 </p>
 
 <h3>Related states</h3>
+<p>
+A binary relation is simply a set of ordered pairs of objects, in our case
+states. The term &quot;binary&quot; here means that the relation deals with
+two objects at a time, i.e. it is about pairs.
+If a relation <i>R</i> contains a pair of states, then those states are
+considered to be related by <i>R</i>.
+For example the relation $R_{M} = \{(s,t),(s,u),(t,u),(u,t)\}$ means that
+<i>s</i> is related to <i>t</i> by <i>R_M</i>,
+which we write as <i>sR_{M}t</i>. The
+converse is not true, however: it is not the case that <i>tR_{M}s</i>. Both
+<i>tR_{M}u</i> and <i>uR_{M}t</i> are true.
+</p>
+<p>
+For an example of a relation that does not hold in both directions, consider
+&quot;to the right of&quot;. <i>s</i> cannot be to the right
+of <i>t</i> if <i>t</i> is to the right of <i>s</i>, only one of these can be
+true. In fact neither of them could be true if <i>s</i> and <i>t</i> are
+stacked vertically.
+</p>
+<p>
+We are interested in relations because they specify what $\box$ and $\diamond$
+mean. One way to understand a relation is that is describes a set of states that
+are accessible, by $\box$ and $\diamond$, from a given state.
+More on this in the examples below.
+</p>
+<img src="modal_example_1.png" style="float:right; margin:1em;">
+<h4>A simple example</h4>
+<p>
+For a simple example (based on Harel et al. 2000 ex 5.1),
+consider a model with the states<br>
+$S_M = \{s,t,u\}$, with the relation<br>
+$R_{M} = \{(s,t),(s,u),(t,u),(u,t)\}$, and with<br>
+$V_M(s) = \{\}, V_M(t)=\{p, q\}, V_M(u)=\{p\}$.<br>
+This is depicted in the diagram on the right, where circled letters are states,
+arrows show relations, and colored shapes enclose states where the like-colored
+propositions are true.
+</p>
+<p>Here, we have $M \vDash \box p$; for any state, all states <i>r</i> it is
+related to (i.e. that it has an arrow pointing to) have $M \vDash_r p$.
+We also have $M \vDash_s \diamond q$ and $M \vDash_u \diamond q$, but not
+$M \vDash_t \diamond q$.<br>
+$M \vDash_t \diamond \diamond q$ is true, though, as
+there is somewhere (<i>u</i>) related from <i>t</i> that relates to somewhere
+(<i>t</i> again) where <i>q</i> is true.
+</p>
+<h4>A neighborhood example</h4>
+<p>
+For a more concrete example, consider the neighborhood nine houses around
+house <i>s</i> pictured on the right below. We will be considering a house as a
+state in a model <i>N</i>, so $N_S = r,s,t,u,v,w,x,y,z$.
+Here <i>s</i> is the neighbor of all of <i>r</i>, <i>t</i>, <i>u</i>,
+<i>v</i>, <i>w</i>, <i>x</i>, <i>y</i>, and <i>z</i>. The neighbor relation we
+will consider is symmetric, so <i>s</i> is a neighbor to <i>t</i> and <i>t</i>
+is a neighbor back to <i>s</i>, written $sR_{N}t$ and $tR_{N}$. The complete
+neighbor relation is<br>
+<img src="neighborhood.png" style="clear:right;float:right; margin:1em;">
+$
+\begin{align} R_{N} = &amp;\{ \\
+  &amp;(r,v), (r,s), (r,t), \\
+  &amp;(t,r), (t,v), (t,s), (t,w), (t,u), \\
+  &amp;(u,t), (u,s), (u,w), \\
+  &amp;(v,r), (v,t), (v,s), (v,y), (v,x), \\
+  &amp;(s,r), (s,t), (s,u), (s,v), (s,w), (s,x), (s,y), (s,z), \\
+  &amp;(w,u), (w,t), (w,s), (w,y), (w,z), \\
+  &amp;(x,v), (x,s), (x,y), \\
+  &amp;(y,x), (y,v), (y,s), (y,w), (y,z), \\
+  &amp;(z,y), (z,s), (z,w) \\
+\}
+\end{align}
+$
+</p>
 
-<h3>Frames</h3>
+<h3 style="clear:both">Frames</h3>
 
 </div>
 </body>
