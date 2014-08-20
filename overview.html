@@ -367,50 +367,63 @@ will explain in the next section.
 
 <h3>Related states</h3>
 <p>
-A binary relation is simply a set of ordered pairs of objects, in our case
-states. The term &quot;binary&quot; here means that the relation deals with
+The meaning of $\box$ and $\diamond$ in a given model is specified by a binary
+relation between pairs of states.
+A <dfn>binary relation</dfn> is simply a set of ordered pairs of objects.
+The term &quot;binary&quot; here means that the relation deals with
 two objects at a time, i.e. it is about pairs.
 If a relation <i>R</i> contains a pair of states, then those states are
 considered to be related by <i>R</i>.
 For example the relation $R = \{(s,t),(s,u),(t,u),(u,t)\}$ means that
 <i>s</i> is related to <i>t</i> by <i>R</i>,
 which we write as <i>sRt</i>. The
-converse is not true, however: it is not the case that <i>tRs</i>. Both
-<i>tRu</i> and <i>uRt</i> are true.
+converse is not true, however: it is not the case that <i>tRs</i> (as there is
+no pair $(t,s)$). Both <i>tRu</i> and <i>uRt</i> are true.
 </p>
+<!--
 <p>
 For an example of a relation that does not hold in both directions, consider
 &quot;to the right of&quot;. <i>s</i> cannot be to the right
 of <i>t</i> if <i>t</i> is to the right of <i>s</i>, only one of these can be
 true. In fact neither of them could be true if neither is to the right of the
 other.
-</p>
+</p>-->
 <p>
-We are interested in relations because they specify what $\box$ and $\diamond$
-mean. One way to understand a relation is that is describes a set of states that
-are accessible, by $\box$ and $\diamond$, from a given state.
+One way to understand the meaning of a relation in a model is that is
+describes the set of states that are accessible, by $\box$ and $\diamond$,
+from a given state. $M \vDash_s \box q$ only refers to the truth of <i>q</i>
+in those states <i>t</i> that are related to <i>s</i> by $sR_{M}t$.
+<br>
 More on this in the examples below.
 </p>
+
 <img src="modal_example_1.png" style="float:right; margin:1em;" alt="interconnected circles representing the model">
-<h4>A simple example</h4>
+
+<h4>A 3-state example</h4>
 <p>
 For a simple example (based on Harel et al. 2000 ex 5.1),
-consider a model with the states<br>
-$S_M = \{s,t,u\}$, with the relation<br>
-$R_{M} = \{(s,t),(s,u),(t,u),(u,t)\}$, and with<br>
-$V_M(s) = \{\}, V_M(t)=\{p, q\}, V_M(u)=\{p\}$.<br>
+consider a model with the states $S_M$, relation $R_M$, and truth values
+determined by $V_M$:<br>
+$S_M = \{s,t,u\}$,<br>
+$R_M = \{(s,t),(s,u),(t,u),(u,t)\}$,<br>
+$V_M(s) = \{\}, V_M(t)=\{p, q\}$,<br>
+$V_M(u)=\{p\}$.<br>
+</p>
+<p>
 This is depicted in the diagram on the right, where circled letters are states,
 arrows show relations, and colored shapes enclose states where the like-colored
 propositions are true.
 </p>
-<p>Here, we have $M \vDash \box p$; for any state, all states <i>r</i> it is
-related to (i.e. that it has an arrow pointing to) have $M \vDash_r p$.
-We also have $M \vDash_s \diamond q$ and $M \vDash_u \diamond q$, but not
-$M \vDash_t \diamond q$.<br>
-$M \vDash_t \diamond \diamond q$ is true, though, as
-there is somewhere (<i>u</i>) related from <i>t</i> that relates to somewhere
-(<i>t</i> again) where <i>q</i> is true.
-</p>
+<p>Here, we have $M \vDash_x \box p$ for any state <i>x</i>,
+as all states <i>y</i> that <i>x</i> is related to
+(i.e. that it has an arrow from x to y) have $M \vDash_y p$. Therefore we can
+write $M \vDash \box p$.</p>
+<p>We also have $M \vDash_s \diamond q$ and $M \vDash_u \diamond q$, but not
+$M \vDash_t \diamond q$.</p>
+<p>$M \vDash_t \diamond \diamond q$ is true, as
+there is some state (<i>u</i>) related from <i>t</i> that relates to some state
+(<i>t</i> again) where <i>q</i> is true.</p>
+
 <h4>A neighborhood example</h4>
 <p>
 For a more concrete example, consider the neighborhood nine houses around
