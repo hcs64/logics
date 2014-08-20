@@ -9,7 +9,7 @@ div.subbody {
   max-width:960px;
   margin-left:auto;
   margin-right:auto;
-  font-family:Times, serif;
+  font-family:serif;
 }
 img {
   display: block;
@@ -82,7 +82,7 @@ terminates&quot;.
 
 <hr>
 
-<a name="intro"><h2>Propositional logic</h2></a>
+<h2 id="intro">Propositional logic</h2>
 <h3>Formal logic</h3>
 <p>
 Our concern in a formal logic is to abstract away every detail that is not
@@ -105,7 +105,9 @@ available.
 A <i>proposition</i> is simply a statement which we regard as true or false.
 An <i>atomic proposition</i> is defined to have no internal structure
 that we are interested in.
-<p>Consider the two atomic propositions
+</p>
+<p>
+Consider the two atomic propositions
 <ul>
 <li><i>p</i> = &quot;My pants are blue&quot;</li>
 <li><i>q</i> = &quot;My hair is black&quot;</li>
@@ -280,7 +282,7 @@ $\wedge$, $\vee$ and $\neg$, can then be considered as
 
 <hr>
 
-<a name="modal"><h2>Modal logic</h2></a>
+<h2 id="modal">Modal logic</h2>
 
 <h3>Multiple states</h3>
 <p>
@@ -384,7 +386,7 @@ mean. One way to understand a relation is that is describes a set of states that
 are accessible, by $\box$ and $\diamond$, from a given state.
 More on this in the examples below.
 </p>
-<img src="modal_example_1.png" style="float:right; margin:1em;">
+<img src="modal_example_1.png" style="float:right; margin:1em;" alt="interconnected circles representing the model">
 <h4>A simple example</h4>
 <p>
 For a simple example (based on Harel et al. 2000 ex 5.1),
@@ -414,7 +416,7 @@ Here <i>s</i> is the neighbor of all of <i>r</i>, <i>t</i>, <i>u</i>,
 will consider is symmetric, so <i>s</i> is a neighbor to <i>t</i> and <i>t</i>
 is a neighbor back to <i>s</i>, written $sR_{N}t$ and $tR_{N}$. The complete
 neighbor relation is<br>
-<img src="neighborhood.png" style="clear:right;float:right; margin:1em;">
+<img src="neighborhood.png" style="clear:right;float:right; margin:1em;" alt="a 3x3 grid of houses with s in the middle">
 ${ \small
 \begin{align} R_{N} = &amp;\{ \\
   &amp;(r,v), (r,s), (r,t), \\
