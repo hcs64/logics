@@ -16,6 +16,9 @@ img {
   margin-left:auto;
   margin-right:auto;
 }
+dfn {
+  font-style:italic;
+}
 </style>
 
 <script type="text/x-mathjax-config">
@@ -401,9 +404,9 @@ More on this in the examples below.
 
 <img src="modal_example_1.png" style="float:right; margin:1em;" alt="interconnected circles representing the model">
 
-<h4>A 3-state example</h4>
+<h4>An example</h4>
 <p>
-For a simple example (based on Harel et al. 2000 ex 5.1),
+For a simple example (based on Harel et al. exercise 5.1),
 consider a model with the states $S_M$, relation $R_M$, and truth values
 determined by $V_M$:<br>
 $S_M = \{s,t,u\}$,<br>
@@ -427,6 +430,80 @@ there is some state (<i>u</i>) related from <i>t</i> that relates to some state
 (<i>t</i> again) where <i>q</i> is true.</p>
 
 <h3 style="clear:both">Frames</h3>
+
+<p>
+A proposition can be true in one state of a model, or it can be true across all
+states in the model. Then there are tautologies such as $p \vee \neg p$, which
+are true regardless of model, as they are true regardless of the truth values of
+the atomic propositions.
+In between propositions that are and that are true in a model,
+there is another level of propositions that are <dfn>valid in a frame</dfn>.
+</p>
+<ol>
+<li>$\varphi$ is true in a state <i>s</i> in a model <i>M</i>, $M \vDash_s \varphi$</li>
+<li>$\varphi$ is true in a model <i>M</i>, true in all states of the model, $M \vDash \varphi$</li>
+<li>$\varphi$ is valid in a frame <i>F</i>, true on all models on a frame, $F \vDash \varphi$</li>
+<li>$\varphi$ is a tautology, valid regardless of frame, $\vDash \varphi$</li>
+</ol>
+<p>
+A <dfn>frame</dfn> consists of just the set of states $S_M$ and the relation
+$R_M$ used to construct the model, that is it does not specify what the truth
+values actually are in the states. The propositions that are valid on a frame
+thus depend on the properties of the relation. Some examples follow
+(from Goldblatt, p. 12, theorem 1.12).
+</p>
+<dl>
+<dt>Reflexivity</dt>
+<dd>
+If a relation says that a state is always related to itself (<i>sRs</i> for all
+states <i>s</i>, the relation is called <dfn>reflexive</dfn>. In any frame that
+has a reflexive relation, all propositions of the form
+$\box \varphi \rightarrow \varphi$ will be valid. If all related states have
+$\varphi$ true, then this state must have $\varphi$ true as well, since it is
+related to itself.
+</dd>
+
+<dt>Symmetry</dt>
+<dd>
+In a symmetric relation <i>R</i>, if <i>sRt</i> then <i>tRs</i>, so all
+relations go both directions. In a frame with a symmetric relation,
+all propositions
+of the form $\varphi \rightarrow \box \diamond \varphi$ are true. That is,
+if $\varphi$ is true at <i>s</i>, then in every state <i>t</i> related to
+<i>s</i>, there is some related state <i>u</i> where $\varphi$ is true. To see
+why this is true, <i>u</i> can just be <i>s</i> since both
+<i>sRt</i> and <i>tRs</i>.
+</dd>
+
+<dt>Transitivity</dt>
+<dd>
+<img src="transitive.png" style="float:right; margin:1em;">
+A transitive relation is always &quot;inherited&quot; through a middle state.
+If <i>sRt</i> and <i>tRu</i>, then, if <i>R</i> is a transitive relation, it is 
+also the case that <i>sRu</i>. This allows the middle state to be cut out so
+that the relation applies directly between two states that are otherwise known
+to be second-degree related.
+<br><br>
+In a frame with a transitive relation, all propositions with the form
+$\box \varphi \rightarrow \box \box \varphi$ are valid. This is because, as
+shown on the right, all states that are second-degree related (such as <i>u</i>)
+are also first-degree related (because of transitivity), thus if all
+first-degree related states have $\varphi$ (i.e. $\box \varphi$), then all
+second-degree related states have $\varphi$ (i.e. $\box \box \varphi$).
+</dd>
+
+<dt style="clear:right;">Seriality</dt>
+<dd>
+A serial relation is usually on an infinite set, like a set of points in time
+that we assume will go on for ever; seriality is the property that any
+state always has a related state. In a frames with a serial relation, all
+propositions with the form $\box \varphi \rightarrow \diamond \varphi$ are
+valid.
+This is simply the statement that we don't have any dead ends where there are
+no related states, where $\box \varphi$ can be true without $\varphi$ actually
+being true anywhere (because &quot;all related states&quot; is nothing).
+</dd>
+</dl>
 
 <hr>
 <h3>Bibliography</h3>
