@@ -102,8 +102,9 @@ available.
 
 <h3>Propositions</h3>
 <p>
-A <i>proposition</i> is simply a statement which we regard as true or false.
-An <i>atomic proposition</i> is defined to have no internal structure
+A <dfn>proposition</dfn> is simply a statement which we regard as true or
+false.
+An <dfn>atomic proposition</dfn> is defined to have no internal structure
 that we are interested in.
 </p>
 <p>
@@ -129,8 +130,8 @@ black&quot;, we might introduce a new atomic proposition called <i>s</i>, but
 this would be a poor choice.
 For instance, it would allow us to make the statement
 &quot;<i>s</i>, but not <i>p</i>&quot;. This is never true given the earlier
-definition of <i>p</i> (it is a <i>contradiction</i>), but that is not clear
-from the form of the statement.
+definition of <i>p</i> (it is a <dfn>contradiction</dfn>),
+but that is not clear from the form of the statement.
 </p>
 <p>
 Instead of <i>s</i>, we can call this proposition $p \wedge q$.
@@ -159,9 +160,10 @@ would be stated fully formally as $p \wedge q \wedge \neg p$.
 We haven't said yet what color my hair or pants actually are. There are some
 statements whose truth doesn't depend on the truth of the atomic propositions,
 for instance contradictions are always false and their opposite,
-<i>tautologies</i>, are always true. But for everything else, the truth value of
-a proposition depends on the truth values of the atomic propositions it is made
-from.
+<dfn>tautologies</dfn>, are always true.
+But for everything else,
+the truth value of a proposition depends on
+the truth values of the atomic propositions it is made from.
 </p>
 
 <div style="float:right;">$$
@@ -176,10 +178,10 @@ $$</div>
 
 <p>
 <br>
-The process of determining the truth value is <i>evaluation</i>, and it
+The process of determining the truth value is <dfn>evaluation</dfn>, and it
 proceeds according to the structure of a statement. For a statement like the
-$p \wedge q$ we have been considering, consult the <i>truth table</i> to the
-right.
+$p \wedge q$ we have been considering, consult the <dfn>truth table</dfn>
+to the right.
 
 <p>The Greek letters $\varphi$ (phi) and $\psi$ (psi) here are used to indicate
 any proposition, not just an atomic proposition.
@@ -225,8 +227,8 @@ $\begin{array}{c|c} \varphi &amp; \neg \varphi \\ \hline
 At this point it is helpful to think of each of the atomic propositions
 <i>p</i> and <i>q</i> as simply something that can be true or false.
 If we say that <i>p</i> is true and <i>q</i> is false, this forms our
-<i>model</i> for the state of the world, our model is formed from the
-<i>valuation</i> &quot;<i>p</i> is true, <i>q</i> is false&quot;.
+<dfn>model</dfn> for the state of the world, our model is formed from the
+<dfn>valuation</dfn> &quot;<i>p</i> is true, <i>q</i> is false&quot;.
 To evaluate $(\neg p \wedge q) \vee (p \wedge \neg q)$, we break it down until
 we arrive at statements whose truth can be determined directly from the model,
 then we build back up to the full statement. This can be pictured as building
@@ -291,8 +293,9 @@ $\wedge$, $\vee$ and $\neg$, can then be considered as
 So far everything discussed holds for classical propositional logic as well as
 modal logic.
 The first place where modal logic differs is that a model can have multiple
-&quot;situations&quot;, &quot;worlds&quot;, or &quot;states&quot;,
-whereas classical logic considers only one set of truths at a time.
+<dfn>states</dfn>, a.k.a. &quot;situations&quot; or &quot;worlds&quot;,
+whereas classical propositional logic considers only one set of truths at a
+time.
 </p>
 <p>
 As an example, say we have one state, call it <i>s</i>, where the atomic
@@ -318,9 +321,9 @@ Often we want to reason without knowing what state is the
 &quot;real world&quot;.
 If we find a proposition that is true across all states, we can use it without
 reference to a particular state.
-If this is so we say the proposition is <i>true in the model</i>, and we write
-$M \vDash \varphi$ without a subscript.
-In the example we have $M \vDash p$ or $M \vDash q \vee p$, for instance.
+If this is so we say the proposition is <dfn>true in the model</dfn>,
+and we write $M \vDash \varphi$ without a subscript.
+In the example we have $M \vDash p$ and $M \vDash q \vee p$, for instance.
 </p>
 
 <h3>Referring to other states</h3>
@@ -369,18 +372,18 @@ states. The term &quot;binary&quot; here means that the relation deals with
 two objects at a time, i.e. it is about pairs.
 If a relation <i>R</i> contains a pair of states, then those states are
 considered to be related by <i>R</i>.
-For example the relation $R_{M} = \{(s,t),(s,u),(t,u),(u,t)\}$ means that
-<i>s</i> is related to <i>t</i> by <i>R_M</i>,
-which we write as <i>sR_{M}t</i>. The
-converse is not true, however: it is not the case that <i>tR_{M}s</i>. Both
-<i>tR_{M}u</i> and <i>uR_{M}t</i> are true.
+For example the relation $R = \{(s,t),(s,u),(t,u),(u,t)\}$ means that
+<i>s</i> is related to <i>t</i> by <i>R</i>,
+which we write as <i>sRt</i>. The
+converse is not true, however: it is not the case that <i>tRs</i>. Both
+<i>tRu</i> and <i>uRt</i> are true.
 </p>
 <p>
 For an example of a relation that does not hold in both directions, consider
 &quot;to the right of&quot;. <i>s</i> cannot be to the right
 of <i>t</i> if <i>t</i> is to the right of <i>s</i>, only one of these can be
-true. In fact neither of them could be true if <i>s</i> and <i>t</i> are
-stacked vertically.
+true. In fact neither of them could be true if neither is to the right of the
+other.
 </p>
 <p>
 We are interested in relations because they specify what $\box$ and $\diamond$
