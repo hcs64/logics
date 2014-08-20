@@ -33,6 +33,12 @@ MathJax.Hub.Config({
 <h1>Modal logics, temporal and dynamic</h1>
 <small>Adam Gashlin</small>
 
+<h2>Contents</h2>
+<ul>
+<li><a href="#intro">Propositional logic</a></li>
+<li><a href="#modal">Modal logic</a></li>
+</ul>
+
 <h2>Overview</h2>
 <p>
 This report deals with a branch of formal logic called
@@ -76,7 +82,7 @@ terminates&quot;.
 
 <hr>
 
-<h2>Introduction</h2>
+<a name="intro"><h2>Propositional logic</h2></a>
 <h3>Formal logic</h3>
 <p>
 Our concern in a formal logic is to abstract away every detail that is not
@@ -153,42 +159,65 @@ for instance contradictions are always false and their opposite,
 a proposition depends on the truth values of the atomic propositions it is made
 from.
 </p>
-<p>
-The process of determining the truth value is <i>evaluation</i>, and it
-proceeds according to the structure of a statement. For a statement like the
-$p \wedge q$ we have been considering, consult this handy <i>truth table</i>:
 
-$$\begin{array}{c|c|c} \varphi &amp; \psi &amp; \varphi \wedge \psi \\ \hline
+<div style="float:right;">$$
+{\large \wedge} \\
+\begin{array}{c|c|c} \varphi &amp; \psi &amp; \varphi \wedge \psi \\ \hline
 \text{T} &amp; \text{T} &amp; \text{T} \\ \hline
 \text{T} &amp; \text{F} &amp; \text{F} \\ \hline
 \text{F} &amp; \text{T} &amp; \text{F} \\ \hline
 \text{F} &amp; \text{F} &amp; \text{F} 
-\end{array}$$
+\end{array}
+$$</div>
+
+<p>
+<br>
+The process of determining the truth value is <i>evaluation</i>, and it
+proceeds according to the structure of a statement. For a statement like the
+$p \wedge q$ we have been considering, consult the <i>truth table</i> to the
+right.
+
 <p>The Greek letters $\varphi$ (phi) and $\psi$ (psi) here are used to indicate
 any proposition, not just an atomic proposition.
 In $p \wedge q$, $\varphi = p$ and $\psi = q$. If $\varphi$ is <b>T</b>rue and $\psi$ is <b>F</b>alse, $\varphi \wedge \psi$ is <b>F</b>alse.</p>
-<p>The benefit of this method over saying &quot;$\wedge$ is 'and'&quot; is
-that the table leaves no room for interpretation. While there may not be many
-ways of interpreting &quot;and&quot;, consider &quot;or&quot;, which is written
-as $\vee$ in propositional logic, and which has this truth table:
-$$\begin{array}{c|c|c} \varphi &amp; \psi &amp; \varphi \vee \psi \\ \hline
+
+<div style="clear:right"></div>
+
+<div style="float:right;">
+$${\large \vee} \\
+
+\begin{array}{c|c|c} \varphi &amp; \psi &amp; \varphi \vee \psi \\ \hline
 \text{T} &amp; \text{T} &amp; \text{T} \\ \hline
 \text{T} &amp; \text{F} &amp; \text{T} \\ \hline
 \text{F} &amp; \text{T} &amp; \text{T} \\ \hline
 \text{F} &amp; \text{F} &amp; \text{F} 
-\end{array}$$
+\end{array}
+$$</div>
+
+
+<p>
+<br>
+The benefit of this method over saying &quot;$\wedge$ is 'and'&quot; is
+that the table leaves no room for interpretation. While there may not be many
+ways of interpreting &quot;and&quot;, consider &quot;or&quot;, which is written
+as $\vee$ in propositional logic, and which has the truth table to the right.
+</p>
+<p>
 In English it is not unusual for &quot;x or y&quot; to exclude the case where
 both x and y are true, but the truth table tells us unambiguously that
 $\varphi$ <b>T</b>rue and $\psi$ <b>T</b>rue makes $\varphi \vee \psi$ <b>T</b>rue.
 </p>
 
+<div style="clear:right"></div>
+
 <p>Consider a more complicated statement such as
 $(\neg p \wedge q) \vee (p \wedge \neg q)$.
-First off, $\neg q$ means &quot;not q&quot;, which has the short truth table
-$$\begin{array}{c|c} \varphi &amp; \neg \varphi \\ \hline
+First off, $\neg q$ means &quot;not q&quot;, which has the truth table:
+$\begin{array}{c|c} \varphi &amp; \neg \varphi \\ \hline
 \text{T} &amp; \text{F} \\ \hline
 \text{F} &amp; \text{T}
-\end{array}$$
+\end{array}$<br>
+
 At this point it is helpful to think of each of the atomic propositions
 <i>p</i> and <i>q</i> as simply something that can be true or false.
 If we say that <i>p</i> is true and <i>q</i> is false, this forms our
@@ -251,7 +280,7 @@ $\wedge$, $\vee$ and $\neg$, can then be considered as
 
 <hr>
 
-<h2>Modal logic</h2>
+<a name="modal"><h2>Modal logic</h2></a>
 
 <h3>Multiple states</h3>
 <p>
