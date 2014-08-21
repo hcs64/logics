@@ -743,13 +743,56 @@ $
 
 <h3>While programs</h3>
 <p>
+It is possible to express real programs in the language of
+dynamic logic, but often we want to use something closer to the programming
+languages in common use. The &quot;while&quot; language is one such
+way of expressing programs more intuitively. We will show how while language
+programs can be converted into dynamic logic.
 </p>
+<dl>
+<dt>primitives</dt>
+<dd>
+We start with primitive programs that work like those in dynamic logic, they
+make some change to the program state. These aren't defined any more
+specifically by the language, the particular problem situation must specify the
+primitive programs that all larger programs are constructed from.
+</dd>
+<dt>sequence</dt>
+<dd>
+As with dynamic logic, we can write a program that runs program <i>x</i>
+and then program <i>y</i> as <i>x ; y</i>. This syntax is identical to the
+equivalent dynamic logic program.</dd>
+<dt>conditional</dt>
+<dd>
+The while language has a conditional statement of the form
+<i>if p then x else y</i>. If the proposition <i>p</i> is true then the
+program <i>x</i> is executed, if instead <i>p</i> is false then the
+program <i>y</i> is executed.
+The dynamic logic program $(p? ; x) \cup (\neg p ? ; y)$ will accomplish the
+same thing, we saw a similar example earlier when introducing tests.
+</dd>
+<dt>loop</dt>
+<dd>
+The main loop construct in a while program is, naturally, <i>while</i>. We write
+<i>while p do x</i> to test proposition <i>p</i>,
+if it is false then the loop is finished,
+otherwise we run <i>x</i> and repeat from the test.
+
+This is expressed in dynamic logic as $(p? ; x)^* ; \neg p?$. The iterative part
+($(p? ; x)^*$) will test <i>p</i> (not progressing if <i>p</i> is false) and
+run <i>x</i>, repeatedly.
+We then need the extra &quot;guard&quot; test $\neg p?$ to prevent any early
+exit from the loop; since the iterative part is nondeterministic, it could run 0
+times or any number of times until <i>p</i> becomes false, we only want it to
+run exactly as many times as it takes for <i>p</i> to become false.
+</dd>
+</dl>
 
 <hr>
 <h3>Bibliography</h3>
 <ul>
 <li>Patrick Blackburn, Maarten de Rijke, and Yde Venema. 2001. <u>Modal Logic</u>. Cambridge University Press.</li>
-<li>Robert Goldblatt. 1987. <u>Logics of Time and Computation</u>. Center for Study of Lang. and Info.</li>
+<li>Robert Goldblatt. 1992. <u>Logics of Time and Computation</u>. Center for Study of Lang. and Info.</li>
 <li>David Harel, Jerzy Tiuryn, and Dexter Kozen. 2000. <u>Dynamic Logic</u>. MIT Press,.</li>
 </ul>
 
