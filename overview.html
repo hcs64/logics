@@ -168,6 +168,48 @@ claim made by $p \rightarrow q$ is that <em>when</em> <i>p</i> is true,
 <i>p</i> is true and <i>q</i> is false.
 </p>
 
+<h4>Parenthesis</h4>
+<p>
+Consider a proposition $a \vee b \wedge c$. How is this to be interpreted?
+We could consider the whole proposition to be of the form
+$a \vee X$, where the <i>X</i> is $b \wedge c$.
+On the other hand it seems that we could just as well consider it to be
+$X \wedge c$ where <i>X</i> is $a \vee b$. These interpretations give
+different meanings to the proposition, for instance
+when <i>a</i> = true, <i>b</i> = true, <i>c</i> = false, the first
+interpretation is true and the second is false.
+</p>
+<p>
+We eliminate these issues of ambiguity by adding parenthesis around parts of the
+expression that are to be considered as a unit. For instance, if we had
+instead written $(a \vee b) \wedge c$, we would be insisting on an
+interpretation where 
+the proposition is of the form $X \wedge c$, where <i>X</i> is $(a \vee b)$.
+The alternative $a \vee X$ wouldn't make sense:
+for one thing $a \vee X$ doesn't have a place for the left parenthesis,
+for another the $X$ would have to be $b) \wedge c$, with a lonely right
+parenthesis.
+</p>
+<p>
+To summarize, we put a pair of parenthesis around a proposition 
+to &quot;wrap&quot; it, so that any interpretation has to &quot;unwrap&quot;
+it as a whole rather than breaking it
+up and giving parts to surrounding expressions.
+</p>
+<p>
+As a side note, parenthesis are only necessary because we are using
+<dfn>infix</dfn> notation, where connectives are written in between the
+propositions they connect, like $a \vee b$. An alternative is <dfn>postfix</dfn>
+notation, where the connectives are written afterwards, such as $a\: b \vee$.
+This form is unambiguous, as the connectives always connect the two previous
+units in the expression. For example the two different interpretations of
+$a \vee b \wedge c$ are written in postfix as
+$a\: b\: c \vee \wedge$ (for $a \vee (b \wedge c)$) and
+$a b \vee c \wedge$ (for $(a \vee b) \wedge c$). The problem is
+that postfix is considered unintuitive and difficult to read,
+so we stick with infix.
+</p>
+
 <h3>Evaluation</h3>
 <p>
 We haven't said yet what color my hair or pants actually are. There are some
@@ -179,30 +221,27 @@ the truth value of a proposition depends on
 the truth values of the atomic propositions it is made from.
 </p>
 
-<div style="float:right;">$$
+<p>
+The process of determining the truth value is <dfn>evaluation</dfn>, and it
+proceeds according to the structure of a statement. For a statement like the
+$p \wedge q$ we have been considering, consult the <dfn>truth table</dfn>
+for $\wedge$ below.
+</p>
+
+<div style="display:inline-block; margin-left:1em; margin-right:1em;">
+$$
 {\large \wedge} \\
+
 \begin{array}{c|c|c} \varphi &amp; \psi &amp; \varphi \wedge \psi \\ \hline
 \text{T} &amp; \text{T} &amp; \text{T} \\ \hline
 \text{T} &amp; \text{F} &amp; \text{F} \\ \hline
 \text{F} &amp; \text{T} &amp; \text{F} \\ \hline
 \text{F} &amp; \text{F} &amp; \text{F} 
 \end{array}
-$$</div>
+$$
+</div>
 
-<p>
-<br>
-The process of determining the truth value is <dfn>evaluation</dfn>, and it
-proceeds according to the structure of a statement. For a statement like the
-$p \wedge q$ we have been considering, consult the <dfn>truth table</dfn>
-to the right.
-
-<p>The Greek letters $\varphi$ (phi) and $\psi$ (psi) here are used to indicate
-any proposition, not just an atomic proposition.
-In $p \wedge q$, $\varphi = p$ and $\psi = q$. If $\varphi$ is <b>T</b>rue and $\psi$ is <b>F</b>alse, $\varphi \wedge \psi$ is <b>F</b>alse.</p>
-
-<div style="clear:right"></div>
-
-<div style="float:right;">
+<div style="display:inline-block; margin-left:1em; margin-right:1em;">
 $${\large \vee} \\
 
 \begin{array}{c|c|c} \varphi &amp; \psi &amp; \varphi \vee \psi \\ \hline
@@ -211,15 +250,39 @@ $${\large \vee} \\
 \text{F} &amp; \text{T} &amp; \text{T} \\ \hline
 \text{F} &amp; \text{F} &amp; \text{F} 
 \end{array}
-$$</div>
+$$
+</div>
 
+<div style="display:inline-block; margin-left:1em; margin-right:1em;">
+$${\large \rightarrow} \\
+
+\begin{array}{c|c|c} \varphi &amp; \psi &amp; \varphi \rightarrow \psi \\ \hline
+\text{T} &amp; \text{T} &amp; \text{T} \\ \hline
+\text{T} &amp; \text{F} &amp; \text{F} \\ \hline
+\text{F} &amp; \text{T} &amp; \text{T} \\ \hline
+\text{F} &amp; \text{F} &amp; \text{T} 
+\end{array}
+$$
+</div>
+
+<div style="display:inline-block; margin-left:1em; margin-right:1em;">
+$${\large \neg} \\
+
+\begin{array}{c|c} \varphi &amp; \neg \varphi \\ \hline
+\text{T} &amp; \text{F} \\ \hline
+\text{F} &amp; \text{T}
+\end{array}$$
+</div>
+
+<p>The Greek letters $\varphi$ (phi) and $\psi$ (psi) here are used to indicate
+any proposition, not just an atomic proposition.
+In $p \wedge q$, $\varphi = p$ and $\psi = q$. If $\varphi$ is <b>T</b>rue and $\psi$ is <b>F</b>alse, $\varphi \wedge \psi$ is <b>F</b>alse.</p>
 
 <p>
-<br>
 The benefit of this method over saying &quot;$\wedge$ is 'and'&quot; is
 that the table leaves no room for interpretation. While there may not be many
 ways of interpreting &quot;and&quot;, consider &quot;or&quot;, which is written
-as $\vee$ in propositional logic, and which has the truth table to the right.
+as $\vee$ in propositional logic, and which has the truth table shown above.
 </p>
 <p>
 In English it is not unusual for &quot;x or y&quot; to exclude the case where
@@ -227,16 +290,9 @@ both x and y are true, but the truth table tells us unambiguously that
 $\varphi$ <b>T</b>rue and $\psi$ <b>T</b>rue makes $\varphi \vee \psi$ <b>T</b>rue.
 </p>
 
-<div style="clear:right"></div>
-
 <p>Consider a more complicated statement such as
 $(\neg p \wedge q) \vee (p \wedge \neg q)$.
-First off, $\neg q$ means &quot;not q&quot;, which has the truth table:
-$\begin{array}{c|c} \varphi &amp; \neg \varphi \\ \hline
-\text{T} &amp; \text{F} \\ \hline
-\text{F} &amp; \text{T}
-\end{array}$<br>
-
+First off, $\neg q$ means &quot;not q&quot;, which has the truth table above.
 At this point it is helpful to think of each of the atomic propositions
 <i>p</i> and <i>q</i> as simply something that can be true or false.
 If we say that <i>p</i> is true and <i>q</i> is false, this forms our
@@ -253,7 +309,7 @@ and filling it with truth values.
 <br><br>
 <img src="xor_tree_eval.png" alt="truth values propagate from the leaves of a tree">
 
-Thus for the this model, with the valuation
+Thus for this model, with the valuation
 &quot;<i>p</i> is true, <i>q</i> is false&quot;, 
 $(\neg p \wedge q) \vee (p \wedge \neg q)$ is true.
 </p>
@@ -286,7 +342,7 @@ $
 Note that only one of these rules applies for every possible proposition,
 so if the left hand side matches the form of a proposition but the condition on 
 the right hand side doesn't hold, then the proposition is false. If
-$M \vDash \varphi$ is not true, we instead write $M \not \vDash \varphi$.
+$M \vDash \varphi$ is false, we write $M \not \vDash \varphi$.
 </p>
 
 <hr>
@@ -538,9 +594,15 @@ ways. Dynamic logic supports this view by providing ways to construct programs
 by combining other programs and by incorporating propositions.
 </p>
 
+<h4>Halting</h4>
 <p>
-A caveat: Programs may not halt, and dynamic logic inherently supports this
-behavior. Failing to halt on some input is indicated by a program relation
+If we expect an output from a program, we require that program to
+<dfn>halt</dfn>, i.e. to finish with a state we consider to be
+the output.
+Programs may not halt, which may be considered as reaching some error condition
+or simply running forever without producing a result.
+Dynamic logic inherently supports this behavior.
+Failing to halt on some input is indicated by a program relation
 mapping some input state to zero output states.
 </p>
 
@@ -605,21 +667,33 @@ outputs, thus the program does not halt. This means that $[ \varphi ? ] \varphi$
 is always true; either</p>
 <ul>
 <li>$\varphi$ was true and thus it is still true after $\varphi ?$ (as it
-relates to the same output state)</li>
+relates to the same output state), or</li>
 <li>$\varphi$ was false so $\varphi ?$ doesn't halt (and
-thus relates to no output state, so $[\varphi?] \psi$ is true for any $\psi$),
-or</li>
+thus relates to no output state,
+so $[\varphi?] \psi$ is true for any $\psi$)</li>
 </ul>
 
 <p>
-Consider the program $(\varphi? ; a) \cup (\neg \varphi? ; b)$. This will
-attempt to run both $\varphi? ; a$ and $\neg \varphi? ; b$
+Consider a program that runs the primitive program <i>a</i>
+only if proposition <i>p</i> is true first, otherwise it does nothing. Perhaps
+it is not necessary or safe to run <i>a</i> if <i>p</i> is false.
+We can write the true part easily enough as <i>p? ; a</i>, which will halt with
+the result of running <i>a</i> if <i>p</i> was true (assuming <i>a</i> halts),
+but this will not halt if <i>p</i> is false.
+On the other hand $\neg p ?$ will halt when <i>p</i>
+is false, without changing the state, but it will not halt when <i>p</i> is
+true.
+We can make this dilemma work with a choice: $(p? ; a) \cup \neg p$. The $\cup$
+makes a program that tries one of the two branches, and as we have established
+only one of them will halt for a given truth value of <i>p</i>. As the choice is
+nondeterministic, the combined program will always halt, having run one of the
+two possibilities.
 </p>
 
 <h3>Formal semantics</h3>
 <p>
-Formally we provide the following rules for the meanings of propositions in
-dynamic logic:
+Formally we provide the following rules for determining the truth of
+propositions in dynamic logic:
 
 $
 \begin{align}
@@ -633,10 +707,10 @@ M &amp; \vDash_s \varphi \rightarrow \psi &amp;&amp;
 \text{ if $M \vDash_s \varphi$ implies $M \vDash_s \psi$} \\
 
 M &amp; \vDash_s \langle \alpha \rangle \varphi &amp;&amp;
-\text{ if there is some $t$ such that $sR_{\alpha}t$ and $M \vDash_t \varphi$} \\
+\text{ if there is some $t$ such that $s(R\alpha)t$ and $M \vDash_t \varphi$} \\
 
 M &amp; \vDash_s [ \alpha ] \varphi &amp;&amp;
-\text{ if for all $t$, if $sR\alpha t$, then $M \vDash_t \varphi$}
+\text{ if for all $t$, if $s(R\alpha)t$, then $M \vDash_t \varphi$}
 \end{align}
 $
 </p>
@@ -645,30 +719,30 @@ $
 (Note: $\vee$ and $\wedge$ can be defined in terms of $\rightarrow$ and $\neg$).
 </p>
 <p>
-$R\alpha$ is the relation for a program $\alpha$. $R\alpha$ is defined for all
-non-primitive programs with the following rules:
+$R\pi$ is the relation for a program $\pi$. $R\pi$ is defined for all
+non-primitive programs with the following rules, where $\alpha$ and $\beta$ are
+programs:
 
 $
 \begin{align}
-&amp; R\alpha ; \beta(s,t) &amp;&amp;
-\text{ if for some u, $R\alpha(s,u)$ and $R\beta(u,t)$} \\
+&amp; s (R\alpha ; \beta) t &amp;&amp;
+\text{ if for some $u$, $s(R\alpha)u$ and $u(R\beta)t$} \\
 
-&amp; R\alpha \cup \beta(s,t) &amp;&amp;
-\text{ if $R\alpha(s,t)$ or $R\beta(s,t)$} \\
+&amp; s (R\alpha \cup \beta) t &amp;&amp;
+\text{ if $s R\alpha t$ or $s R\beta t$} \\
 
-&amp; R\alpha^* (s,t) &amp;&amp;
-\text{ if $R\alpha(s,t)$ or $R(\alpha ; \alpha^*)(s,t)$} \\
+&amp; s (R\alpha^*) t &amp;&amp;
+\text{ if $s = t$ or $s (R\alpha ; \alpha^*) t$} \\
 
-&amp; R\varphi?(s,s) &amp;&amp;
+&amp; s (R\varphi?) s &amp;&amp;
 \text{ if } M \vDash_s \varphi
 
 \end{align}
 $
 </p>
+
+<h3>While programs</h3>
 <p>
-(Note: the rule for iteration is not well defined, but it shows the spirit of
-the operation, and evaluating nondeterministic iteration is beyond the scope of
-this report)
 </p>
 
 <hr>
