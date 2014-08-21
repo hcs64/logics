@@ -204,7 +204,7 @@ notation, where the connectives are written afterwards, such as $a\: b \vee$.
 This form is unambiguous, as the connectives always connect the two previous
 units in the expression. For example the two different interpretations of
 $a \vee b \wedge c$ are written in postfix as
-$a\: b\: c \vee \wedge$ (for $a \vee (b \wedge c)$) and
+$a\: b\: c \wedge \vee$ (for $a \vee (b \wedge c)$) and
 $a b \vee c \wedge$ (for $(a \vee b) \wedge c$). The problem is
 that postfix is considered unintuitive and difficult to read,
 so we stick with infix.
@@ -569,7 +569,7 @@ being true anywhere (because &quot;all related states&quot; is nothing).
 Temporal logic is a branch of modal logic which supports
 propositions that are true at one time yet are false at another.
 Moreover, because this is a full-featured
-modal logic, the propositions true at some time can make reference to other
+modal logic, propositions at some time can make reference to other
 times. Thus we can give the proposition <i>p</i> for &quot;the machine is
 working&quot;, $\diamond p$ for &quot;at some point in the future the machine
 will work&quot;, and $\box p$ for &quot;the machine will work at all times in
@@ -579,7 +579,7 @@ the future&quot;.
 <p>
 In a temporal logic model
 <i>M</i>, we consider the states of the model $S_M$ to be points in time,
-and the relation $R_M$ is defined beteween two points in time, one of which is
+and the relation $R_M$ is defined between two points in time, one of which is
 before the other. $s R_M t$ means <i>s</i> is before <i>t</i>,
 therefore <i>t</i> is in the future of <i>s</i>.
 Those propositions which are true at a time <i>s</i> are given by $V_M(s)$, as
@@ -652,15 +652,16 @@ just $\diamond$ and $\box$. These are $[F]$ and $\langle F \rangle$ for the
 future, and $[P]$ and $\langle P \rangle$ for the past.
 </p>
 
-<h4>Discrete vs continuous</h4>
+<h4>Non-discrete</h4>
 <p>
-In an analysis of computation we probably want to think of time as a series of
+In an analysis of computation, we probably want to think of time as a series of
 instants, one following another. But in more general analyses of time, it may be
 desirable to assume that between any two distinct instants there is another.
 </p>
 <p>
-There are several possible models of continuous time. Time could behave like the
-rational numbers, which can be indexed by the integers, or like the real
+There are several possible models of non-discrete time.
+Time could behave like the rational numbers,
+which can be indexed by the integers, or like the real
 numbers, which cannot. The distinction between real and rational time is only
 relevant with if we are using the two-way temporal logic described above;
 with only a future modality, they behave identically
@@ -711,7 +712,7 @@ mapping some input state to zero output states.
 <p>
 At its heart, a dynamic logic is based on some set of primitive programs, these
 will just be the relations of the modal logic. For example we will call two
-primitive programs <i>a</i> and <i>b</i>. Programs can be combined in
+programs <i>a</i> and <i>b</i>. Programs can be combined in
 several ways, and each combination is itself a program.
 </p>
 <ul>
@@ -740,7 +741,7 @@ $\varphi$ is true, then after running <i>a</i> and then running <i>b</i> any
 number of times, $\varphi$ will be true&quot;. One interesting proposition is
 $[\alpha^*]\varphi \rightarrow [\alpha ; \alpha^*]\varphi$, which states that
 if running $\alpha$ any number of times results in $\varphi$ true, then running
-it at least once (once plus any number of times) results in $\varphi$ true, this
+it at least once (once plus any number of times) results in $\varphi$ true; this
 is true of any program $\alpha$ and any proposition $\varphi$.
 </p>
 
@@ -775,7 +776,7 @@ so $[\varphi?] \psi$ is true for any $\psi$)</li>
 </ul>
 
 <p>
-Consider a program that runs the primitive program <i>a</i>
+Consider a program that runs the program <i>a</i>
 only if proposition <i>p</i> is true first, otherwise it does nothing. Perhaps
 it is not necessary or safe to run <i>a</i> if <i>p</i> is false.
 We can write the true part easily enough as <i>p? ; a</i>, which will halt with
@@ -830,7 +831,7 @@ $
 \text{ if for some $u$, $s(R\alpha)u$ and $u(R\beta)t$} \\
 
 &amp; s (R\alpha \cup \beta) t &amp;&amp;
-\text{ if $s R\alpha t$ or $s R\beta t$} \\
+\text{ if $s (R\alpha) t$ or $s (R\beta) t$} \\
 
 &amp; s (R\alpha^*) t &amp;&amp;
 \text{ if $s = t$ or $s (R\alpha ; \alpha^*) t$} \\
@@ -884,7 +885,7 @@ This is expressed in dynamic logic as $(p? ; x)^* ; \neg p?$. The iterative part
 run <i>x</i>, repeatedly.
 We then need the extra &quot;guard&quot; test $\neg p?$ to prevent any early
 exit from the loop; since the iterative part is nondeterministic, it could run 0
-times or any number of times until <i>p</i> becomes false, we only want it to
+times or any number of times until <i>p</i> becomes false, we want it to
 run exactly as many times as it takes for <i>p</i> to become false.
 </dd>
 </dl>
