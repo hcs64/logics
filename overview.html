@@ -42,6 +42,8 @@ MathJax.Hub.Config({
 <ul>
 <li><a href="#intro">Propositional logic</a></li>
 <li><a href="#modal">Modal logic</a></li>
+<!-- <li>Temporal logic</li> -->
+<li><a href="#dynamic">Dynamic logic</a></li>
 </ul>
 
 <h2>Overview</h2>
@@ -502,6 +504,172 @@ no related states, where $\box \varphi$ can be true without $\varphi$ actually
 being true anywhere (because &quot;all related states&quot; is nothing).
 </dd>
 </dl>
+
+<!--
+<hr>
+<h2 id="temporal">Temporal logic</h2>
+<p>coming soon</p>
+-->
+<hr>
+
+<h2 id="dynamic">Dynamic logic</h2>
+<p>This section is largely drawn from Harel et al. Chapter 5.</p>
+
+<h3>A logic for change</h3>
+<p>
+Dynamic logic is about expressing the means of change between the states of a
+system, and how truths can be related between the states. Typically we think of
+programs changing the state of a computer.
+There are many (infinitely many) relations in dynamic logic, and each one
+represents the behavior of a particular program. These relations are completely
+arbitrary, in particular a program may relate one input state to several output
+states, which represents nondeterminism (i.e. multiple possible outcomes).
+We may use nondeterminism because there are truly unpredictable behaviors at
+work, or because it is preferable to not overspecify exactly what will happen.
+</p>
+
+<p>
+A set of arbitrary relations is not a very effective representation of
+programming: while a program can be thought of as some mapping of inputs
+to outputs, it is usually constructed from a few primive operations combined
+into a larger program. Programming languages provide constructs like loops and
+conditional statements to facilitate combining smaller parts in well-structured
+ways. Dynamic logic supports this view by providing ways to construct programs
+by combining other programs and by incorporating propositions.
+</p>
+
+<p>
+A caveat: Programs may not halt, and dynamic logic inherently supports this
+behavior. Failing to halt on some input is indicated by a program relation
+mapping some input state to zero output states.
+</p>
+
+<h3>Syntax</h3>
+<p>
+At its heart, a dynamic logic is based on some set of primitive programs, these
+will just be the relations of the modal logic. For example we will call two
+primitive programs <i>a</i> and <i>b</i>. Programs can be combined in
+several ways, and each combination is itself a program.
+</p>
+<ul>
+<li>A <dfn>sequence</dfn>, written <i>a ; b</i>,
+runs program <i>a</i> and then program <i>b</i>.</li>
+<li>A <dfn>choice</dfn>, written $a \cup b$,
+nondeterministically runs either <i>a</i> or <i>b</i>.</li>
+<li>An <dfn>iteration</dfn>, written $a^*$,
+runs program <i>a</i> a nondeterministic number of times, 0 or more.</li>
+</ul>
+
+<p>
+When we want to make propositions about what is true after running a program, we
+write the program as a modal operator, like the modal operators $\box$ and
+$\diamond$ that we had in the basic modal logic language discussed earlier.
+For instance we write
+$\langle a \rangle$ (like $\diamond$) if we are stating what is true
+after <em>some</em> run of program <i>a</i>, or $[a]$ (like $\box$) if we are
+stating what is true after <em>all</em> runs of the program.
+</p>
+
+<p>
+Thus we can make statements like
+$\varphi \rightarrow [ a ; b^* ] \varphi$, meaning &quot;if
+$\varphi$ is true, then after running <i>a</i> and then running <i>b</i> any
+number of times, $\varphi$ will be true&quot;. One interesting proposition is
+$[\alpha^*]\varphi \rightarrow [\alpha ; \alpha^*]\varphi$, which states that
+if running $\alpha$ any number of times results in $\varphi$ true, then running
+it at least once (once plus any number of times) results in $\varphi$ true, this
+is true of any program $\alpha$ and any proposition $\varphi$.
+</p>
+
+<p>
+As an example of choice, $\langle a \cup (b;b) \rangle \varphi$
+means that if we consider running program <i>a</i> once or program <i>b</i>
+twice, at least one of these will result in $\varphi$.
+</p>
+
+<p>
+We will usually use the $[\alpha]$ form of operator, as we are interested in
+what will necessarily be true after the program halts, but as noted we need
+to be careful that the program actually does halt.
+</p>
+
+<h4>Tests</h4>
+<p>
+There is one other way to make a program in dynamic logic: If $\varphi$ is a
+proposition, $\varphi ?$ is a program. This type of program is a
+<dfn>test</dfn>, and it can be understood as doing nothing when the proposition
+is true, thus the relation for $\varphi ?$ relates input states where $\varphi$ 
+is true to identical outputs.
+However, if the proposition is false, the relation maps to no
+outputs, thus the program does not halt. This means that $[ \varphi ? ] \varphi$
+is always true; either</p>
+<ul>
+<li>$\varphi$ was true and thus it is still true after $\varphi ?$ (as it
+relates to the same output state)</li>
+<li>$\varphi$ was false so $\varphi ?$ doesn't halt (and
+thus relates to no output state, so $[\varphi?] \psi$ is true for any $\psi$),
+or</li>
+</ul>
+
+<p>
+Consider the program $(\varphi? ; a) \cup (\neg \varphi? ; b)$. This will
+attempt to run both $\varphi? ; a$ and $\neg \varphi? ; b$
+</p>
+
+<h3>Formal semantics</h3>
+<p>
+Formally we provide the following rules for the meanings of propositions in
+dynamic logic:
+
+$
+\begin{align}
+M &amp; \vDash_s p &amp;&amp;
+\text{ if $p$ is in $V_M(s)$} \\
+
+M &amp; \vDash_s \neg \varphi &amp;&amp;
+\text{ if $M \not {\vDash_s} \varphi$} \\
+
+M &amp; \vDash_s \varphi \rightarrow \psi &amp;&amp;
+\text{ if $M \vDash_s \varphi$ implies $M \vDash_s \psi$} \\
+
+M &amp; \vDash_s \langle \alpha \rangle \varphi &amp;&amp;
+\text{ if there is some $t$ such that $sR_{\alpha}t$ and $M \vDash_t \varphi$} \\
+
+M &amp; \vDash_s [ \alpha ] \varphi &amp;&amp;
+\text{ if for all $t$, if $sR\alpha t$, then $M \vDash_t \varphi$}
+\end{align}
+$
+</p>
+
+<p>
+(Note: $\vee$ and $\wedge$ can be defined in terms of $\rightarrow$ and $\neg$).
+</p>
+<p>
+$R\alpha$ is the relation for a program $\alpha$. $R\alpha$ is defined for all
+non-primitive programs with the following rules:
+
+$
+\begin{align}
+&amp; R\alpha ; \beta(s,t) &amp;&amp;
+\text{ if for some u, $R\alpha(s,u)$ and $R\beta(u,t)$} \\
+
+&amp; R\alpha \cup \beta(s,t) &amp;&amp;
+\text{ if $R\alpha(s,t)$ or $R\beta(s,t)$} \\
+
+&amp; R\alpha^* (s,t) &amp;&amp;
+\text{ if $R\alpha(s,t)$ or $R(\alpha ; \alpha^*)(s,t)$} \\
+
+&amp; R\varphi?(s,s) &amp;&amp;
+\text{ if } M \vDash_s \varphi
+
+\end{align}
+$
+</p>
+<p>
+(Note: the rule for iteration is not well defined, but it shows the spirit of
+the operation, and evaluating nondeterministic iteration is beyond the scope of
+this report)
+</p>
 
 <hr>
 <h3>Bibliography</h3>
