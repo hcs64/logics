@@ -42,7 +42,7 @@ MathJax.Hub.Config({
 <ul>
 <li><a href="#intro">Propositional logic</a></li>
 <li><a href="#modal">Modal logic</a></li>
-<!-- <li>Temporal logic</li> -->
+<li><a href="#temporal">Temporal logic</a></li>
 <li><a href="#dynamic">Dynamic logic</a></li>
 </ul>
 
@@ -508,7 +508,7 @@ values actually are in the states. The propositions that are valid on a frame
 thus depend on the properties of the relation. Some examples follow
 (from Goldblatt, p. 12, theorem 1.12).
 </p>
-<dl>
+<dl id="frame_properties">
 <dt>Reflexivity</dt>
 <dd>
 If a relation says that a state is always related to itself (<i>sRs</i> for all
@@ -561,11 +561,118 @@ being true anywhere (because &quot;all related states&quot; is nothing).
 </dd>
 </dl>
 
-<!--
 <hr>
+
 <h2 id="temporal">Temporal logic</h2>
+<h3>A time-dependent logic</h3>
+<p>
+Temporal logic is a branch of modal logic which supports
+propositions that are true at one time yet are false at another.
+Moreover, because this is a full-featured
+modal logic, the propositions true at some time can make reference to other
+times. Thus we can give the proposition <i>p</i> for &quot;the machine is
+working&quot;, $\diamond p$ for &quot;at some point in the future the machine
+will work&quot;, and $\box p$ for &quot;the machine will work at all times in
+the future&quot;.
+</p>
+
+<p>
+In a temporal logic model
+<i>M</i>, we consider the states of the model $S_M$ to be points in time,
+and the relation $R_M$ is defined beteween two points in time, one of which is
+before the other. $s R_M t$ means <i>s</i> is before <i>t</i>,
+therefore <i>t</i> is in the future of <i>s</i>.
+Those propositions which are true at a time <i>s</i> are given by $V_M(s)$, as
+in modal logic in general.
+</p>
+
+<h3>Properties of the temporal relation</h3>
+<p>
+Let's consider a few of the
+<a href="#frame_properties">properties of relations</a> mentioned above,
+and whether they should apply to our model of time.
+It is normally the case that we do not want to consider the present as part of
+the future, which is to say the relation $R_M$ is not reflexive, in fact it is
+<dfn>irreflexive</dfn> as no time relates to itself.
+We also insist that times only have one order, so $s R_M t$ and $t R_M s$ can't
+both be true. This makes $R_M$ not symmetric, indeed it is
+a combination of the irreflexive property and the <dfn>antisymmetric</dfn>
+property, which states that <i>sRt</i> and <i>tRs</i> only if <i>s = t</i>.
+These properties, irreflexivity and antisymmetry, do not correspond to valid
+propositions across frames, unlike reflexivity and symmetry do
+(Goldblatt p. 14).
+</p>
+<p>
+We probably also want $R_M$ to have seriality,
+to ensure that time goes on forever.
+</p>
+
+
+<p>
+Transitivity is an important property that $R_M$ must have if <i>M</i> is to
+make sense as a model of time. A transitive relation means that
+$s R_M t \wedge t R_M u \rightarrow s R_M u$, so a point in the future of the
+future is in the future of the present. It would make little sense that a point
+further in the future would not still be in the future.
+</p>
+<h4>Connectedness</h4>
+<p>
+These properties aren't enough to narrow down a unique interpretation of time,
+however. For one thing, we haven't made any claim that every time is comparable
+to every other, i.e. while we have said that not both
+$s R_M t$ and $t R_M s$ are true (a combination of antisymmetry and
+irreflexivity),
+it is possible that neither are true.
+This allows unconnected sections of the timeline, which have no relation
+to other sections. It also raises the possibility of branching time: there may 
+be more than one possible future for a given point in time.
+</p>
+<p>
+If we do make the requirement that exactly one of $s R_M t$ or $t R_M s$ are
+true, except in the case when <i>s = t</i> (in which case both are false because
+of irreflexivity), then $R_M$ fits most of our intuitions about time. It behaves
+like the &quot;less than&quot; relation on numbers, so we can consider the
+states of the model to each have a unique &quot;clock&quot;.
+</p>
+
+<h3>Variations of temporal logic</h3>
+<h4>Diodorean</h4>
+If we instead allow $R_M$ to be reflexive, we are dealing with the
+&quot;Diodorean Modality&quot; (Goldblatt pg. 44).
+This is used in an analysis of programs which we will see shortly.
+It forces us to consider the present to be part of the future, so what will
+always be true must currently be true.
+
+<h4>Two-way</h4>
+<p>
+Often it is the case that we want to talk about times that are in the past as
+well as times that are in the future. We can do this by introducing another
+relation that is the converse (every pair is reversed) of the relation we have
+dealt with so far. We then also have two sets of modal connectives, instead of
+just $\diamond$ and $\box$. These are $[F]$ and $\langle F \rangle$ for the
+future, and $[P]$ and $\langle P \rangle$ for the past.
+</p>
+
+<h4>Discrete vs continuous</h4>
+<p>
+In an analysis of computation we probably want to think of time as a series of
+instants, one following another. But in more general analyses of time, it may be
+desirable to assume that between any two distinct instants there is another.
+</p>
+<p>
+There are several possible models of continuous time. Time could behave like the
+rational numbers, which can be indexed by the integers, or like the real
+numbers, which cannot. The distinction between real and rational time is only
+relevant with if we are using the two-way temporal logic described above;
+with only a future modality, they behave identically
+(Goldblatt ex. 6.4 and 8.8).
+</p>
+
+<!--
+<h3>As a model for programs</h3>
 <p>coming soon</p>
 -->
+
 <hr>
 
 <h2 id="dynamic">Dynamic logic</h2>
@@ -624,7 +731,7 @@ runs program <i>a</i> a nondeterministic number of times, 0 or more.</li>
 
 <p>
 When we want to make propositions about what is true after running a program, we
-write the program as a modal operator, like the modal operators $\box$ and
+write the program as a modal connective, like the modal connectives $\box$ and
 $\diamond$ that we had in the basic modal logic language discussed earlier.
 For instance we write
 $\langle a \rangle$ (like $\diamond$) if we are stating what is true
@@ -650,7 +757,7 @@ twice, at least one of these will result in $\varphi$.
 </p>
 
 <p>
-We will usually use the $[\alpha]$ form of operator, as we are interested in
+We will usually use the $[\alpha]$ form, as we are interested in
 what will necessarily be true after the program halts, but as noted we need
 to be careful that the program actually does halt.
 </p>
